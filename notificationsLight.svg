@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+<defs>
+	<linearGradient id="greyGradient" x1="0" x2="0" y1="0" y2="1">
+		<stop stop-color="#bbb" offset="0%" />
+		<stop stop-color="#000" offset="50%" />
+	</linearGradient>
+</defs>
+
+<circle cx="15" cy="22" r="4" fill="#d7d7d7" stroke="#000" stroke-width="1" />
+<circle cx="15" cy="10" r="7" fill="#000" />
+<circle cx="15" cy="10" r="6" fill="url(#greyGradient)" />
+<rect x="8" y="10" width="14" height="12" fill="#000" />
+<polygon points="4,22 8,22 8,15" fill="#000" />
+<polygon points="22,22 26,22 22,15" fill="#000" />
+
+</svg>
