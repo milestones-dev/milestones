@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<svg width="154" height="136" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+<rect x="60" y="36" width="34" height="13" fill="#b0b0b0" transform="rotate(-45, 77, 43)" />
+<rect x="89" y="19" width="10" height="13" fill="#b0b0b0" transform="rotate(-45, 94, 26)" />
+<polygon points="59,52 68,61 56,64" fill="#b0b0b0" />
+
+</svg>

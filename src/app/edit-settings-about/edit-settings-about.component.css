@@ -1,0 +1,439 @@
+@media only screen and (min-width: 1000px)
+{
+    #editSettingsAboutContainer
+    {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 725px;
+        border-radius: 10px;
+        font-size: 10pt;
+        min-height: 450px;
+        max-height: 70%;
+        overflow-y: scroll;
+        z-index: 15;
+        visibility: hidden;
+        opacity: 0%;
+        transition: visibility 0.3s ease-out, opacity 0.3s ease-out;
+        display: flex;
+        flex-flow: column
+    }
+
+    #editSettingsAboutHeader
+    {
+        text-align: center;
+        padding: 7px;
+        font-size: 13pt;
+        font-weight: bold;
+        position: sticky;
+        top: 0px;
+        z-index: 10;
+        flex: 0 1 auto
+    }
+
+    #sidebarAndView
+    {
+        flex: 1 1 auto;
+        position: relative
+    }
+
+    #editSettingsAboutSidebar
+    {
+        width: 28%;
+        height: 100%;
+        display: inline-block;
+        position: absolute;
+        box-sizing: border-box
+    }
+    #openSidebarMobileButton
+    {
+        display: none;
+    }
+    .menuIconLine
+    {
+        display: none;
+    }
+
+    .lightSidebar
+    {
+        background-color: #f0f0f0;
+        border-right: 1px solid lightgray;
+    }
+
+    .darkSidebar
+    {
+        background-color: #000;
+        border-right: 1px solid rgb(111, 111, 111);
+    }
+
+    #editSettingsAboutView
+    {
+        left: 28%;
+        width: 72%;
+        height: 100%;
+        display: inline-block;
+        top: 0px;
+        position: absolute;
+        overflow: scroll
+    }
+    .editSettingsAboutViewLight
+    {
+        background-color: #f0f0f0;
+    }
+    .editSettingsAboutViewDark
+    {
+        background-color: #000;
+    }
+
+    #editButton
+    {
+        position: absolute;
+        width: 115px;
+        bottom: 125px;
+        right: 20px
+    }
+
+    #settingsButton
+    {
+        position: absolute;
+        width: 115px;
+        bottom: 20px;
+        right: 20px
+    }
+
+    #editButton img, #settingsButton img
+    {
+        width: 100%
+    }
+
+    #saveButton
+    {
+        position: absolute;
+        right: 5px;
+        font-weight: bold;
+        width: 60px;
+        font-size: 11pt;
+        padding: 2px;
+        top: 5px;
+        height: calc(100% - 10px);
+    }
+
+    #exportButton
+    {
+        position: absolute;
+        left: 5px;
+        font-weight: normal;
+        font-size: 11pt;
+        width: 60px;
+        padding: 2px;
+        top: 5px;
+        height: calc(100% - 10px);
+    }
+
+    #saveButton span, #exportButton span
+    {
+        position: absolute;
+        display: block;
+        top: calc(50% - 1px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #infoGroup
+    {
+        border-radius: 4px;
+        width: calc(100% - 14px);
+        margin: auto;
+        margin-top: 7px;
+        overflow: hidden;
+    }
+    .infoGroupLight
+    {
+        background-color: white;
+        border: 1px solid #c2c2c2;
+        box-sizing: border-box;
+    }
+    .infoGroupDark
+    {
+        background-color: rgb(67, 67, 67);
+        border: 1px solid rgb(111, 111, 111);
+        box-sizing: border-box;
+    }
+
+    .infoLine
+    {
+        width: 100%;
+        padding: 9px;
+        box-sizing: border-box;
+        position: relative;
+    }
+    .infoLineLight
+    {
+        border-bottom: 1px solid lightgrey;
+    }
+    .infoLineDark
+    {
+        border-bottom: 1px solid rgb(111, 111, 111);
+    }
+
+    .infoLineKey
+    {
+        text-align: left;
+    }
+    .infoLineValue
+    {
+        color: #9d9d9d;
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    #appDescription
+    {
+        width: calc(100% - 14px);
+        margin: auto;
+        margin-top: 7px
+    }
+}
+
+
+
+
+
+@media only screen and (max-width: 999px)
+{
+    #editSettingsAboutContainer
+    {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        border-radius: 0px;
+        font-size: 10pt;
+        overflow-y: scroll;
+        z-index: 15;
+        visibility: hidden;
+        opacity: 0%;
+        transition: visibility 0.3s ease-out, opacity 0.3s ease-out;
+        display: block;
+    }
+
+    #editSettingsAboutHeader
+    {
+        text-align: center;
+        padding: 7px;
+        font-size: 13pt;
+        font-weight: bold;
+        position: sticky;
+        top: 0px;
+        z-index: 10
+    }
+
+    #sidebarAndView
+    {
+        position: relative;
+        height: 100%
+    }
+
+    #editSettingsAboutSidebar
+    {
+        width: 200px;
+        height: 100%;
+        display: block;
+        position: absolute;
+        box-sizing: border-box;
+        left: -200px;
+        visibility: hidden;
+        transition: left 0.3s ease-out, visibility 0.3s ease-out;
+        z-index: 12;
+    }
+    .editSettingsAboutSidebarMobileLight
+    {
+        background-color: #f0f0f0;
+    }
+    .editSettingsAboutSidebarMobileDark
+    {
+        background-color: #000;
+    }
+
+    #openSidebarMobileButton
+    {
+        width: 44px;
+        height: calc(100% - 10px);
+        left: 5px;
+        top: 0px;
+        position: absolute;
+    }
+    .firstMenuLine
+    {
+        margin-top: 0px !important
+    }
+    .menuIconLine
+    {
+        position: relative;
+        height: 3px;
+        width: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 1px;
+        margin-top: 3px;
+    }
+    .menuIconLineLight
+    {
+        background: black
+    }
+    .menuIconLineDark
+    {
+        background: white;
+    }
+    .showSidebarMobile
+    {
+        visibility: visible !important;
+        left: 0px !important
+    }
+
+    .lightSidebar
+    {
+        background-color: #f0f0f0;
+        border-right: 1px solid lightgray;
+    }
+
+    .darkSidebar
+    {
+        background-color: #000;
+        border-right: 1px solid rgb(111, 111, 111);
+    }
+
+    #editSettingsAboutView
+    {
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        display: block;
+        top: 0px;
+        position: absolute;
+        overflow: scroll
+    }
+    .editSettingsAboutViewLight
+    {
+        background-color: #f0f0f0;
+    }
+    .editSettingsAboutViewDark
+    {
+        background-color: #000;
+    }
+
+    #editButton
+    {
+        position: absolute;
+        width: 115px;
+        bottom: 125px;
+        right: 20px
+    }
+
+    #settingsButton
+    {
+        position: absolute;
+        width: 115px;
+        bottom: 20px;
+        right: 20px
+    }
+
+    #editButton img, #settingsButton img
+    {
+        width: 100%
+    }
+
+    #saveButton
+    {
+        position: absolute;
+        right: 5px;
+        font-weight: bold;
+        width: 60px;
+        font-size: 11pt;
+        padding: 2px;
+        top: 5px;
+        height: calc(100% - 10px);
+    }
+
+    #exportButton
+    {
+        position: absolute;
+        left: 54px;
+        font-weight: normal;
+        font-size: 11pt;
+        width: 60px;
+        padding: 2px;
+        top: 5px;
+        height: calc(100% - 10px);
+    }
+
+    #saveButton span, #exportButton span
+    {
+        position: absolute;
+        display: block;
+        top: calc(50% - 1px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #infoGroup
+    {
+        border-radius: 4px;
+        width: calc(100% - 14px);
+        margin: auto;
+        margin-top: 7px;
+        overflow: hidden;
+    }
+    .infoGroupLight
+    {
+        background-color: white;
+        border: 1px solid #c2c2c2;
+        box-sizing: border-box;
+    }
+    .infoGroupDark
+    {
+        background-color: rgb(67, 67, 67);
+        border: 1px solid rgb(111, 111, 111);
+        box-sizing: border-box;
+    }
+
+    .infoLine
+    {
+        width: 100%;
+        padding: 9px;
+        box-sizing: border-box;
+        position: relative;
+    }
+    .infoLineLight
+    {
+        border-bottom: 1px solid lightgrey;
+    }
+    .infoLineDark
+    {
+        border-bottom: 1px solid rgb(111, 111, 111);
+    }
+
+    .infoLineKey
+    {
+        text-align: left;
+    }
+    .infoLineValue
+    {
+        color: #9d9d9d;
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    #appDescription
+    {
+        width: calc(100% - 14px);
+        margin: auto;
+        margin-top: 7px
+    }
+}

@@ -1,0 +1,304 @@
+<div class="settingsGroup">
+    <span class="settingsTitle">COUNTDOWN FORMAT</span>
+    <div class="settingsSelectors" [class.settingsElementLight]="CurrentTheme() == Light()" [class.settingsElementDark]="CurrentTheme() == Dark()">
+
+        <div class="settingsSelector" [class.settingsSelectorLight]="CurrentTheme() == Light()" [class.settingsSelectorDark]="CurrentTheme() == Dark()" (click)="openTimeRemainingOptions()">
+            <span class="settingsSelectorName" [class.textLight]="CurrentTheme() == Light()" [class.textDark]="CurrentTheme() == Dark()">Time remaining text</span>
+            <div class="settingsSelectedValueArrow">
+                <span class="settingsSelectorValue">{{getTimeRemaining()}}</span>
+                <div class="settingsDropdownButton" [class.dialogButtonLight]="CurrentTheme() == Light()" [class.dialogButtonDark]="CurrentTheme() == Dark()">
+                    <img class="downArrow" [src]="getOpenCloseTimeRemainingImg()" />
+                </div>
+            </div>
+        </div>
+        <div id="selectorWindowTimeRemaining" [class.selectorWindowLight]="CurrentTheme() == Light()" [class.selectorWindowDark]="CurrentTheme() == Dark()" [class.opacityFull]="showTimeRemainingOptions()">
+            <div [class.selectorWindowItemLight]="CurrentTheme() == Light()" [class.selectorWindowItemDark]="CurrentTheme() == Dark()" (click)="setTimeRemaining(Days())">
+                Days
+                @if(getTimeRemaining() == Days()){ <img src="tick.svg" class="tickIcon" /> }
+            </div>
+            <div [class.selectorWindowItemLight]="CurrentTheme() == Light()" [class.selectorWindowItemDark]="CurrentTheme() == Dark()" (click)="setTimeRemaining(Weeks())">
+                Weeks and Days
+                @if(getTimeRemaining() == Weeks()){ <img src="tick.svg" class="tickIcon" /> }
+            </div>
+            <div [class.selectorWindowItemLight]="CurrentTheme() == Light()" [class.selectorWindowItemDark]="CurrentTheme() == Dark()" (click)="setTimeRemaining(Months())">
+                Months, Weeks and Days
+                @if(getTimeRemaining() == Months()){ <img src="tick.svg" class="tickIcon" /> }
+            </div>
+            <div class="lastItem" [class.selectorWindowItemLight]="CurrentTheme() == Light()" [class.selectorWindowItemDark]="CurrentTheme() == Dark()" (click)="setTimeRemaining(MonthsDays())">
+                Months and Days
+                @if(getTimeRemaining() == MonthsDays()){ <img src="tick.svg" class="tickIcon" /> }
+            </div>
+        </div>
+
+        <div class="settingsSelector lastItem" (click)="openMilestoneLabelFormatOptions()">
+            <span class="settingsSelectorName" [class.textLight]="CurrentTheme() == Light()" [class.textDark]="CurrentTheme() == Dark()">Milestone label format</span>
+            <div class="settingsSelectedValueArrow">
+                <span class="settingsSelectorValue">{{getMilestoneLabelFormat()}}</span>
+                <div class="settingsDropdownButton" [class.dialogButtonLight]="CurrentTheme() == Light()" [class.dialogButtonDark]="CurrentTheme() == Dark()">
+                    <img class="downArrow" [src]="getOpenCloseLabelFormatImg()" />
+                </div>
+            </div>
+        </div>
+        <div id="selectorWindowMilestoneLabelFormat" [class.selectorWindowLight]="CurrentTheme() == Light()" [class.selectorWindowDark]="CurrentTheme() == Dark()" [class.opacityFull]="showMilestoneLabelFormatOptions()">
+            <div [class.selectorWindowItemLight]="CurrentTheme() == Light()" [class.selectorWindowItemDark]="CurrentTheme() == Dark()" (click)="setMilestoneLabelFormat(Name())">
+                Name
+                @if(getMilestoneLabelFormat() == Name()){ <img src="tick.svg" class="tickIcon" /> }
+            </div>
+            <div [class.selectorWindowItemLight]="CurrentTheme() == Light()" [class.selectorWindowItemDark]="CurrentTheme() == Dark()" (click)="setMilestoneLabelFormat(Date())">
+                Date
+                @if(getMilestoneLabelFormat() == Date()){ <img src="tick.svg" class="tickIcon" /> }
+            </div>
+            <div [class.selectorWindowItemLight]="CurrentTheme() == Light()" [class.selectorWindowItemDark]="CurrentTheme() == Dark()" (click)="setMilestoneLabelFormat(Percentage())">
+                Percentage
+                @if(getMilestoneLabelFormat() == Percentage()){ <img src="tick.svg" class="tickIcon" /> }
+            </div>
+            <div class="lastItem" [class.selectorWindowItemLight]="CurrentTheme() == Light()" [class.selectorWindowItemDark]="CurrentTheme() == Dark()" (click)="setMilestoneLabelFormat(DayNumber())">
+                Day Number
+                @if(getMilestoneLabelFormat() == DayNumber()){ <img src="tick.svg" class="tickIcon" /> }
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+<div class="settingsGroup">
+    <span class="settingsTitle">APPEARANCE</span>
+
+    <span class="settingsHeader">Theme</span>
+    <div class="settingsItem" [class.settingsElementLight]="CurrentTheme() == Light()" [class.settingsElementDark]="CurrentTheme() == Dark()">
+        <div id="themeIconsContainer">
+            <div [class.themeIcons]="!themeIsLight()" [class.themeIconsSelected]="themeIsLight()" (click)="setTheme(Light())">
+                <img src="lightTheme.svg" />
+                <p [class.textLight]="CurrentTheme() == Light()" [class.textDark]="CurrentTheme() == Dark()">Light</p>
+            </div>
+            <div [class.themeIcons]="!themeIsDark()" [class.themeIconsSelected]="themeIsDark()" (click)="setTheme(Dark())">
+                <img src="darkTheme.svg" />
+                <p [class.textLight]="CurrentTheme() == Light()" [class.textDark]="CurrentTheme() == Dark()">Dark</p>
+            </div>
+            <div [class.themeIcons]="!themeIsAuto()" [class.themeIconsSelected]="themeIsAuto()" (click)="setAutoTheme()">
+                <img src="autoTheme.svg" />
+                <p [class.textLight]="CurrentTheme() == Light()" [class.textDark]="CurrentTheme() == Dark()">System / Auto</p>
+            </div>
+        </div>
+    </div>
+
+    <span class="settingsHeader">Background</span>
+    <div class="settingsItem" [class.settingsElementLight]="CurrentTheme() == Light()" [class.settingsElementDark]="CurrentTheme() == Dark()">
+        <div id="tabContainer">
+			<div id="tabWallpaperLight"
+            [class.tabLight]="!showWallpaperLight() && CurrentTheme() == Light()"
+            [class.tabLightSelected]="showWallpaperLight() && CurrentTheme() == Light()"
+            [class.tabDark]="!showWallpaperLight() && CurrentTheme() == Dark()"
+            [class.tabDarkSelected]="showWallpaperLight() && CurrentTheme() == Dark()"
+            (click)="openWallpaperLight()">Light Mode</div>
+
+            <div id="tabWallpaperDark"
+            [class.tabLight]="!showWallpaperDark() && CurrentTheme() == Light()"
+            [class.tabLightSelected]="showWallpaperDark() && CurrentTheme() == Light()"
+            [class.tabDark]="!showWallpaperDark() && CurrentTheme() == Dark()"
+            [class.tabDarkSelected]="showWallpaperDark() && CurrentTheme() == Dark()"
+            (click)="openWallpaperDark()">Dark Mode</div>
+		</div>
+
+		<div id="tabViews" [class.tabViewsLight]="CurrentTheme() == Light()" [class.tabViewsDark]="CurrentTheme() == Dark()" [class.textLight]="CurrentTheme() == Light()" [class.textDark]="CurrentTheme() == Dark()">
+			@if (showWallpaperLight())
+            {
+                <div class="row">
+                    <div class="backgroundGridIcon" [class.gridIconSelected]="getWallpaperLight() == Default()" (click)="setWallpaperLight(Default())">
+                        <div id="defaultGridIconLight"></div>
+                        <p>Default</p>
+                    </div>
+                    <div class="backgroundGridIcon" [class.gridIconSelected]="getWallpaperLight() == BoatHouse()" (click)="setWallpaperLight(BoatHouse())">
+                        <img [src]="BoatHousePreview()" />
+                        <p>Boat House</p>
+                    </div>
+                    <div class="backgroundGridIcon" [class.gridIconSelected]="getWallpaperLight() == OldBuilding()" (click)="setWallpaperLight(OldBuilding())">
+                        <img [src]="OldBuildingPreview()" />
+                        <p>Old Building</p>
+                    </div>
+                    <div class="backgroundGridIcon" [class.gridIconSelected]="getWallpaperLight() == LondonEye()" (click)="setWallpaperLight(LondonEye())">
+                        <img [src]="LondonEyePreview()" />
+                        <p>London Eye</p>
+                    </div>                    
+                </div>
+                <div class="row">
+                    <div class="backgroundGridIcon" [class.gridIconSelected]="getWallpaperLight() == Canal()" (click)="setWallpaperLight(Canal())">
+                        <img [src]="CanalPreview()" />
+                        <p>Canal</p>
+                    </div>
+                    <div class="backgroundGridIcon" [class.gridIconSelected]="getWallpaperLight() == SkiResort()" (click)="setWallpaperLight(SkiResort())">
+                        <img [src]="SkiResortPreview()" />
+                        <p>Ski Resort</p>
+                    </div>
+                    <div class="backgroundGridIcon" [class.gridIconSelected]="getWallpaperLight() == Houses()" (click)="setWallpaperLight(Houses())">
+                        <img [src]="HousesPreview()" />
+                        <p>Houses</p>
+                    </div>
+                    <div class="backgroundGridIcon" [class.gridIconSelected]="getWallpaperLight() == Custom()" (click)="setWallpaperLight(Custom())">
+                        <img [src]="getCustomBackgroundIconImage()" />
+                        <input type="text" id="customBackgroundUrlInputLight" [class.inputLight]="CurrentTheme() == Light()" [class.inputDark]="CurrentTheme() == Dark()" placeholder="Enter image URL..." [(ngModel)]="customWallpaperUrl" (keyup)="setCustomWallpaper()" />
+                    </div>                    
+                </div>
+            }
+            @if (showWallpaperDark())
+            {
+                <div class="row">
+                    <div class="backgroundGridIcon" [class.gridIconSelected]="getWallpaperDark() == Default()" (click)="setWallpaperDark(Default())">
+                        <div id="defaultGridIconDark"></div>
+                        <p>Default</p>
+                    </div>
+                    <div class="backgroundGridIcon" [class.gridIconSelected]="getWallpaperDark() == BoatHouse()" (click)="setWallpaperDark(BoatHouse())">
+                        <img [src]="BoatHousePreview()" />
+                        <p>Boat House</p>
+                    </div>
+                    <div class="backgroundGridIcon" [class.gridIconSelected]="getWallpaperDark() == OldBuilding()" (click)="setWallpaperDark(OldBuilding())">
+                        <img [src]="OldBuildingPreview()" />
+                        <p>Old Building</p>
+                    </div>
+                    <div class="backgroundGridIcon" [class.gridIconSelected]="getWallpaperDark() == LondonEye()" (click)="setWallpaperDark(LondonEye())">
+                        <img [src]="LondonEyePreview()" />
+                        <p>London Eye</p>
+                    </div>                    
+                </div>
+                <div class="row">
+                    <div class="backgroundGridIcon" [class.gridIconSelected]="getWallpaperDark() == Canal()" (click)="setWallpaperDark(Canal())">
+                        <img [src]="CanalPreview()" />
+                        <p>Canal</p>
+                    </div>
+                    <div class="backgroundGridIcon" [class.gridIconSelected]="getWallpaperDark() == SkiResort()" (click)="setWallpaperDark(SkiResort())">
+                        <img [src]="SkiResortPreview()" />
+                        <p>Ski Resort</p>
+                    </div>
+                    <div class="backgroundGridIcon" [class.gridIconSelected]="getWallpaperDark() == Houses()" (click)="setWallpaperDark(Houses())">
+                        <img [src]="HousesPreview()" />
+                        <p>Houses</p>
+                    </div>
+                    <div class="backgroundGridIcon" [class.gridIconSelected]="getWallpaperDark() == Custom()" (click)="setWallpaperDark(Custom())">
+                        <img [src]="getCustomBackgroundIconImage()" />
+                        <input type="text" id="customBackgroundUrlInputDark" [class.inputLight]="CurrentTheme() == Light()" [class.inputDark]="CurrentTheme() == Dark()" placeholder="Enter image URL..." [(ngModel)]="customWallpaperUrl" (keyup)="setCustomWallpaper()" />
+                    </div>                    
+                </div>
+            }
+		</div>
+    </div>
+
+</div>
+
+
+<div class="settingsGroup">
+    <span class="settingsTitle">NOTIFICATIONS</span>
+    <div class="settingsSelectors" [class.settingsElementLight]="CurrentTheme() == Light()" [class.settingsElementDark]="CurrentTheme() == Dark()">
+
+        <div class="settingsSelector lastItem" (click)="openNotificationsOptions()">
+            <span class="settingsSelectorName" [class.textLight]="CurrentTheme() == Light()" [class.textDark]="CurrentTheme() == Dark()">Notification Setting</span>
+            <div class="settingsSelectedValueArrow">
+                <span class="settingsSelectorValue">{{getNotificationSetting()}}</span>
+                <div class="settingsDropdownButton" [class.dialogButtonLight]="CurrentTheme() == Light()" [class.dialogButtonDark]="CurrentTheme() == Dark()">
+                    <img class="downArrow" [src]="getOpenCloseNotificationsImg()" />
+                </div>
+            </div>
+        </div>
+        <div id="selectorWindowNotificationSetting" [class.selectorWindowLight]="CurrentTheme() == Light()" [class.selectorWindowDark]="CurrentTheme() == Dark()" [class.opacityFull]="showNotificationsOptions()">
+            <div [class.selectorWindowItemLight]="CurrentTheme() == Light()" [class.selectorWindowItemDark]="CurrentTheme() == Dark()" (click)="setNotificationSetting(Both())">
+                Both
+                @if(getNotificationSetting() == Both()){ <img src="tick.svg" class="tickIcon" /> }
+            </div>
+            <div [class.selectorWindowItemLight]="CurrentTheme() == Light()" [class.selectorWindowItemDark]="CurrentTheme() == Dark()" (click)="setNotificationSetting(Countdowns())">
+                Countdowns Only
+                @if(getNotificationSetting() == Countdowns()){ <img src="tick.svg" class="tickIcon" /> }
+            </div>
+            <div [class.selectorWindowItemLight]="CurrentTheme() == Light()" [class.selectorWindowItemDark]="CurrentTheme() == Dark()" (click)="setNotificationSetting(Milestones())">
+                Milestones Only
+                @if(getNotificationSetting() == Milestones()){ <img src="tick.svg" class="tickIcon" /> }
+            </div>
+            <div class="lastItem" [class.selectorWindowItemLight]="CurrentTheme() == Light()" [class.selectorWindowItemDark]="CurrentTheme() == Dark()" (click)="setNotificationSetting(Off())">
+                Off
+                @if(getNotificationSetting() == Off()){ <img src="tick.svg" class="tickIcon" /> }
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<div class="settingsGroup">
+    <span class="settingsTitle">COUNTDOWN LANGUAGE</span>
+    <div class="settingsSelectors" [class.settingsElementLight]="CurrentTheme() == Light()" [class.settingsElementDark]="CurrentTheme() == Dark()">
+
+        <div class="settingsSelector lastItem" (click)="openLanguageOptions()">
+            <span class="settingsSelectorName" [class.textLight]="CurrentTheme() == Light()" [class.textDark]="CurrentTheme() == Dark()">Language</span>
+            <div class="settingsSelectedValueArrow">
+                <span class="settingsSelectorValue">{{getLanguage()}}</span>
+                <div class="settingsDropdownButton" [class.dialogButtonLight]="CurrentTheme() == Light()" [class.dialogButtonDark]="CurrentTheme() == Dark()">
+                    <img class="downArrow" [src]="getOpenCloseLanguageImg()" />
+                </div>
+            </div>
+        </div>
+        <div id="selectorWindowLanguage" [class.selectorWindowLight]="CurrentTheme() == Light()" [class.selectorWindowDark]="CurrentTheme() == Dark()" [class.opacityFull]="showLanguageOptions()">
+            <div [class.selectorWindowItemLight]="CurrentTheme() == Light()" [class.selectorWindowItemDark]="CurrentTheme() == Dark()" (click)="setLanguage(English())">
+                {{English()}}
+                @if(getLanguage() == English()){ <img src="tick.svg" class="tickIcon" /> }
+            </div>
+            <div [class.selectorWindowItemLight]="CurrentTheme() == Light()" [class.selectorWindowItemDark]="CurrentTheme() == Dark()" (click)="setLanguage(French())">
+                {{French()}}
+                @if(getLanguage() == French()){ <img src="tick.svg" class="tickIcon" /> }
+            </div>
+            <div [class.selectorWindowItemLight]="CurrentTheme() == Light()" [class.selectorWindowItemDark]="CurrentTheme() == Dark()" (click)="setLanguage(German())">
+                {{German()}}
+                @if(getLanguage() == German()){ <img src="tick.svg" class="tickIcon" /> }
+            </div>
+            <div [class.selectorWindowItemLight]="CurrentTheme() == Light()" [class.selectorWindowItemDark]="CurrentTheme() == Dark()" (click)="setLanguage(Spanish())">
+                {{Spanish()}}
+                @if(getLanguage() == Spanish()){ <img src="tick.svg" class="tickIcon" /> }
+            </div>
+            <div [class.selectorWindowItemLight]="CurrentTheme() == Light()" [class.selectorWindowItemDark]="CurrentTheme() == Dark()" (click)="setLanguage(Portuguese())">
+                {{Portuguese()}}
+                @if(getLanguage() == Portuguese()){ <img src="tick.svg" class="tickIcon" /> }
+            </div>
+            <div [class.selectorWindowItemLight]="CurrentTheme() == Light()" [class.selectorWindowItemDark]="CurrentTheme() == Dark()" (click)="setLanguage(Italian())">
+                {{Italian()}}
+                @if(getLanguage() == Italian()){ <img src="tick.svg" class="tickIcon" /> }
+            </div>
+            <div [class.selectorWindowItemLight]="CurrentTheme() == Light()" [class.selectorWindowItemDark]="CurrentTheme() == Dark()" (click)="setLanguage(Polish())">
+                {{Polish()}}
+                @if(getLanguage() == Polish()){ <img src="tick.svg" class="tickIcon" /> }
+            </div>
+            <div class="lastItem" [class.selectorWindowItemLight]="CurrentTheme() == Light()" [class.selectorWindowItemDark]="CurrentTheme() == Dark()" (click)="setLanguage(Russian())">
+                {{Russian()}}
+                @if(getLanguage() == Russian()){ <img src="tick.svg" class="tickIcon" /> }
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<div class="settingsGroup">
+    <span class="settingsTitle">RESET</span>
+
+    <div class="settingsButton" [class.dialogButtonWarningLight]="CurrentTheme() == Light()" [class.dialogButtonWarningDark]="CurrentTheme() == Dark()" (click)="openResetYear()">Reset to Year-to-Year Countdown</div>
+    <div class="settingsButton" [class.dialogButtonWarningLight]="CurrentTheme() == Light()" [class.dialogButtonWarningDark]="CurrentTheme() == Dark()" (click)="openResetEmpty()">Reset All Countdown Values</div>
+    <div class="settingsButton" [class.dialogButtonWarningLight]="CurrentTheme() == Light()" [class.dialogButtonWarningDark]="CurrentTheme() == Dark()" (click)="openResetSettings()">Reset Settings to Default</div>
+</div>
+
+<div class="greyedOutBackground lightGreyedOutBackground" [class.opacityFull]="showResetYear() || showResetEmpty() || showResetSettings()"></div>
+
+<div [class.dialogLight]="CurrentTheme() == Light()" [class.dialogDark]="CurrentTheme() == Dark()" [class.opacityFull]="showResetYear()">
+    <header>Reset to Empty Year-to-Year Countdown?</header>
+    <p>This will reset the countdown name, end message and all milestone values back to their default values.<br><br>It will also set the start date to 1st January this year and the end date to 1st January next year.</p>
+    <div [class.dialogButtonWarningLight]="CurrentTheme() == Light()" [class.dialogButtonWarningDark]="CurrentTheme() == Dark()" (click)="resetYear()">Reset</div>
+    <div [class.dialogButtonLight]="CurrentTheme() == Light()" [class.dialogButtonDark]="CurrentTheme() == Dark()" (click)="openResetYear(false)">Cancel</div>
+</div>
+
+<div [class.dialogLight]="CurrentTheme() == Light()" [class.dialogDark]="CurrentTheme() == Dark()" [class.opacityFull]="showResetEmpty()">
+    <header>Reset All Countdown Values?</header>
+    <p>This will reset the start date, end date, countdown name, end message and all milestone values back to their default values.</p>
+    <div [class.dialogButtonWarningLight]="CurrentTheme() == Light()" [class.dialogButtonWarningDark]="CurrentTheme() == Dark()" (click)="resetEmpty()">Reset</div>
+    <div [class.dialogButtonLight]="CurrentTheme() == Light()" [class.dialogButtonDark]="CurrentTheme() == Dark()" (click)="openResetEmpty(false)">Cancel</div>
+</div>
+
+<div [class.dialogLight]="CurrentTheme() == Light()" [class.dialogDark]="CurrentTheme() == Dark()" [class.opacityFull]="showResetSettings()">
+    <header>Reset Settings to Default?</header>
+    <p>This will reset the time remaining text, milestone label format, theme, backgrounds, notifications setting and language back to their default values.</p>
+    <div [class.dialogButtonWarningLight]="CurrentTheme() == Light()" [class.dialogButtonWarningDark]="CurrentTheme() == Dark()" (click)="resetSettings()">Reset</div>
+    <div [class.dialogButtonLight]="CurrentTheme() == Light()" [class.dialogButtonDark]="CurrentTheme() == Dark()" (click)="openResetSettings(false)">Cancel</div>
+</div>

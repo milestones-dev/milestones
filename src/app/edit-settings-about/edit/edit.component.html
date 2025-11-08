@@ -1,0 +1,107 @@
+<div class="greyedOutBackground lightGreyedOutBackground" [class.opacityFull]="showExport() || showErrorDialog()"></div>
+
+<div [class.dialogLight]="themeIsLight()" [class.dialogDark]="themeIsDark()" [class.opacityFull]="showExport()">
+    <header>Export Countdown</header>
+    <p>Copy this text and paste when importing:</p>
+    <div id="exportCountdownInput" [class.inputLight]="themeIsLight()" [class.inputDark]="themeIsDark()">{{exportCountdownText()}}</div>
+    <div [class.dialogButtonActionLight]="themeIsLight()" [class.dialogButtonActionDark]="themeIsDark()" (click)="copyExportCountdownText()">Copy to Clipboard</div>
+    <div [class.dialogButtonLight]="themeIsLight()" [class.dialogButtonDark]="themeIsDark()" (click)="exportCountdown(false)">Dismiss</div>
+</div>
+
+<div [class.dialogLight]="themeIsLight()" [class.dialogDark]="themeIsDark()" [class.opacityFull]="showErrorDialog()">
+    <header>Invalid Values</header>
+    <p>The input caused the following errors:</p>
+    <div id="errorDialogInput" [class.inputLight]="themeIsLight()" [class.inputDark]="themeIsDark()">
+        <ul id="errorDialogUL">
+        @for(error of validationErrorsString(); track $index)
+        {
+            <li>{{error}}</li>
+        }
+        </ul>
+    </div>
+    <div [class.dialogButtonLight]="themeIsLight()" [class.dialogButtonDark]="themeIsDark()" (click)="closeErrorDialog()">OK</div>
+</div>
+
+<div id="editForm">
+
+    <div class="inputGroup">
+        <span class="editHeaders" id="countdownValuesEditHeader">COUNTDOWN VALUES</span>
+        <div id="countdownValuesInputs" [class.countdownInputsLight]="themeIsLight()" [class.countdownInputsDark]="themeIsDark()">
+            <div class="countdownInput" [class.countdownInputLight]="themeIsLight()" [class.countdownInputDark]="themeIsDark()">
+                <span [class.textLight]="themeIsLight()" [class.textDark]="themeIsDark()">Name</span>
+                <input type="text" class="countdownInputBox" [class.inputLight]="themeIsLight()" [class.inputDark]="themeIsDark()" [ngModel]="this.editService.edit().name" (ngModelChange)="updateName($event)">
+            </div>
+            <div class="countdownInput" [class.countdownInputLight]="themeIsLight()" [class.countdownInputDark]="themeIsDark()">
+                <span [class.textLight]="themeIsLight()" [class.textDark]="themeIsDark()">End Message</span>
+                <input type="text" class="countdownInputBox" [class.inputLight]="themeIsLight()" [class.inputDark]="themeIsDark()" [ngModel]="this.editService.edit().endMessage" (ngModelChange)="updateEndMessage($event)">
+            </div>
+            <div class="countdownInput" [class.countdownInputLight]="themeIsLight()" [class.countdownInputDark]="themeIsDark()">
+                <span [class.textLight]="themeIsLight()" [class.textDark]="themeIsDark()">Start Date</span>
+                <input type="date" class="countdownInputBox" [class.inputLight]="themeIsLight()" [class.inputDark]="themeIsDark()" [ngModel]="this.editService.edit().startDate | date:'yyyy-MM-dd'" (ngModelChange)="updateStartDate($event)">
+            </div>
+            <div class="countdownInput" [class.countdownInputLight]="themeIsLight()" [class.countdownInputDark]="themeIsDark()" [class.endDateInputLight]="themeIsLight()" [class.endDateInputDark]="themeIsDark()">
+                <span [class.textLight]="themeIsLight()" [class.textDark]="themeIsDark()">End Date</span>
+                <input type="date" class="countdownInputBox" [class.inputLight]="themeIsLight()" [class.inputDark]="themeIsDark()" [ngModel]="this.editService.edit().endDate | date:'yyyy-MM-dd'" (ngModelChange)="updateEndDate($event)">
+            </div>
+        </div>
+    </div>
+
+    <div class="inputGroup inputGroupMilestones">
+        <span class="editHeaders">COUNTDOWN MILESTONES</span>
+
+        @for(milestone of this.editService.edit().milestones; track $index)
+        {
+            <div class="milestoneInputs" [class.milestoneInputsLight]="themeIsLight()" [class.milestoneInputsDark]="themeIsDark()">
+                <div class="greyedOutMilestone" [class.opacityFull]="showDeleteButtons()">
+                    <div class="deleteButton" [class.dialogButtonWarningLight]="themeIsLight()" [class.dialogButtonWarningDark]="themeIsDark()" (click)="deleteMilestone($index)">
+                        <img src="delete.svg">
+                    </div>
+                </div>
+
+                <div class="nameAndDate">
+                    <div class="nameInput">
+                        <span>Name</span>
+                        <input type="text" class="milestoneTextbox" [class.milestoneTextboxLight]="themeIsLight()" [class.milestoneTextboxDark]="themeIsDark()" [ngModel]="this.editService.edit().milestones[$index].name" (ngModelChange)="updateMilestoneName($event, $index)">
+                    </div>
+                    <div class="dateInput">
+                        <span>Date</span>
+                        <input type="date" class="milestoneTextbox" [class.milestoneTextboxLight]="themeIsLight()" [class.milestoneTextboxDark]="themeIsDark()" [ngModel]="this.editService.edit().milestones[$index].date | date:'yyyy-MM-dd'" (ngModelChange)="updateMilestoneDate($event, $index)">
+                    </div>
+                </div>
+
+                <div class="notes">
+                    <textarea class="milestoneTextarea" [class.milestoneTextareaLight]="themeIsLight()" [class.milestoneTextareaDark]="themeIsDark()" placeholder="Milestone notes..." [ngModel]="this.editService.edit().milestones[$index].notes" (ngModelChange)="updateMilestoneNotes($event, $index)"></textarea>
+                </div>
+
+            </div>
+        }
+        </div>
+
+        <div id="addDeleteMilestoneButtons">
+        @if(editService.edit().milestones.length < this.editService.MILESTONE_COUNT_LIMIT())
+        {
+            <div id="addMilestoneButton" class="countdownMilestonesInputs">
+                <div [class.dialogButtonActionLight]="themeIsLight()" [class.dialogButtonActionDark]="themeIsDark()" (click)="addMilestone()">
+                    <span>Add Milestone</span>
+                </div>
+            </div>
+        }
+
+        @if(editService.edit().milestones.length > 0)
+        {
+            <div id="deleteMilestoneButton" class="countdownMilestonesInputs">
+                <div [class.dialogButtonWarningLight]="themeIsLight()" [class.dialogButtonWarningDark]="themeIsDark()" (click)="toggleDeleteButtons()">
+                    @if(!showDeleteButtons())
+                    {
+                        <span>Delete Milestone</span>
+                    }
+                    @else
+                    {
+                        <span>Done</span>
+                    }
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

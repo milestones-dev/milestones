@@ -1,0 +1,48 @@
+<div id="milestonesInfoWindow"
+[class.milestonesInfoWindowLight]="themeIsLight()"
+[class.milestonesInfoWindowDark]="themeIsDark()"
+[class.showWindow]="showWindow()">
+    <div id="milestonesInfoWindowHeader"
+    [class.headerLight]="themeIsLight()"
+    [class.headerDark]="themeIsDark()">
+        Milestones
+
+        <div id="closeMilestoneInfo"
+        [class.dialogButtonLight]="themeIsLight()"
+        [class.dialogButtonDark]="themeIsDark()"
+        (click)="closeMilestonesInfoWindow()">
+            <img [src]="themeIsLight() ? 'closeLight.svg' : 'closeDark.svg'">
+        </div>
+    </div>
+
+    <div id="milestonesInfoWindowContent"
+    [class.milestonesInfoWindowContentLight]="themeIsLight()"
+    [class.milestonesInfoWindowContentDark]="themeIsDark()">
+        <div id="tabContainer">
+			<div id="tabInfoList"
+            [class.tabLight]="!showList() && themeIsLight()"
+            [class.tabLightSelected]="showList() && themeIsLight()"
+            [class.tabDark]="!showList() && themeIsDark()"
+            [class.tabDarkSelected]="showList() && themeIsDark()"
+            (click)="openList()">List</div>
+
+            <div id="tabInfoNotes"
+            [class.tabLight]="!showNotes() && themeIsLight()"
+            [class.tabLightSelected]="showNotes() && themeIsLight()"
+            [class.tabDark]="!showNotes() && themeIsDark()"
+            [class.tabDarkSelected]="showNotes() && themeIsDark()"
+            (click)="openNotes()">Notes</div>
+		</div>
+
+		<div id="tabViews" [class.tabViewsLight]="themeIsLight()" [class.tabViewsDark]="themeIsDark()" [class.textLight]="themeIsLight()" [class.textDark]="themeIsDark()">
+            @if(showList())
+            {
+                <app-milestones-list></app-milestones-list>
+            }
+            @if(showNotes())
+            {
+                <app-milestone-notes></app-milestone-notes>
+            }
+        </div>
+    </div>
+</div>

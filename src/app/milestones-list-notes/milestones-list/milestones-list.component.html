@@ -1,0 +1,17 @@
+@if(this.milestones().length > 0)
+{
+    @for(milestone of this.milestones(); track $index)
+    {
+        <div [class.milestoneListItemLight]="themeIsLight()" [class.milestoneListItemDark]="themeIsDark()" [class.firstListItem]="$index == 0">
+            <span class="milestonesListItemName">{{milestone.name.length == 0 ? ('milestone ' + ($index+1)) : milestone.name}}</span>
+            <div class="milestoneListItemDaysRemaining">{{getMilestoneDaysRemaining($index)()}}</div>
+            <div [class.milestoneOuterBarLight]="themeIsLight()" [class.milestoneOuterBarDark]="themeIsDark()">
+                <div [class.milestoneInnerBarLight]="themeIsLight()" [class.milestoneInnerBarDark]="themeIsDark()" [style.width.%]="getMilestoneBar($index)()"></div>
+            </div>
+        </div>
+    }
+}
+@else
+{
+    <span id="noMilestones">No Milestones</span>
+}

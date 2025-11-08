@@ -1,0 +1,337 @@
+#countdownsMenuIconOuter
+{
+    position: absolute;
+    left: 5px;
+    top: 33px;
+    width: 68px;
+    height: 30px;
+    z-index: 9;
+    margin-top: 0px;
+    
+    box-shadow: 0px 0px 0px 0px black;
+}
+.countdownsMenuIconOuterLight
+{
+    border: 1px solid #717171;
+}
+.countdownsMenuIconOuterDark
+{
+    border: 1px solid #959595;
+}
+
+.countdownsMenuIconLine
+{
+    width: 40px;
+    position: relative;
+    height: 4px;
+    
+    left: 50%;
+    top: 0px;
+    margin-top: 4px;
+    transform: translate(-50%);
+}
+.firstMenuLine
+{
+    margin-top: 0px !important
+}
+.menuLineLight
+{
+    background-color: black;
+}
+.menuLineDark
+{
+    background-color: lightGray;
+}
+
+#countdownsMenu
+{
+    position: absolute;
+    width: 250px;
+    height: 100%;
+    top: 0px;
+    left: -250px;
+    display: flex;
+    flex-direction: column;
+    transition: left 0.3s ease-out, visibility 0.3s ease-out;
+    visibility: hidden;
+    z-index: 12
+}
+#countdownsMenuItemsContainer
+{
+    flex: 1;
+    overflow-y: scroll;
+}
+.countdownsMenuLight
+{
+    background: #f1f1f1;
+    box-shadow: rgba(75, 75, 75, 0.6) 12px 12px 33px 2px, rgba(255, 255, 255, 0.6) -12px -12px 33px 2px
+}
+.countdownsMenuDark
+{
+    background: black;
+    box-shadow: rgba(148, 148, 148, 0.6) 12px 12px 33px 2px, rgba(255, 255, 255, 0.6) -12px -12px 33px 2px
+}
+.showMenu
+{
+    visibility: visible !important;
+    left: 0px !important;
+}
+.hideMenu
+{
+    left: -250px !important;
+    visibility: hidden !important;
+}
+
+.countdownsMenuHeaderLight
+{
+    background-color: rgba(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-bottom: 1px solid lightgray;
+    position: sticky;
+    top: 0px;
+    z-index: 11;
+}
+.countdownsMenuHeaderDark
+{
+    background-color: rgba(67, 67, 67);
+    color: rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(90, 90, 90);
+    position: sticky;
+    top: 0px;
+    z-index: 11;
+}
+
+#countdownsMenuHeader span
+{
+    position: relative;
+    margin: 0px;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 13pt;
+    display: block;
+}
+
+#closeCountdownsMenu
+{
+    position: absolute;
+    right: 6px;
+    top: 1px;
+    font-size: 11pt;
+    width: 30px;
+    height: 30px;
+}
+
+#addCountdownButton
+{
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    font-size: 11pt;
+    width: 30px;
+    height: 30px;
+}
+
+#addCountdownButton img, #closeCountdownsMenu img
+{
+    width: 100%
+}
+
+.addOptionsLight
+{
+    width: fit-content;
+    position: absolute;
+    background-color: #fff;
+    color: #000;
+    left: 0px;
+    top: 39px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 7px 7px 30px 0px rgba(115, 115, 115, 0.4), -7px -7px 30px 0px rgba(115, 115, 115, 0.4);
+    transition: visibility 0.3s ease-out, opacity 0.3s ease-out;
+    visibility: hidden;
+    opacity: 0%;
+    z-index: 12;
+    border: 1px solid #c2c2c2
+}
+.addOptionsDark
+{
+    position: absolute;
+    background-color: rgb(67, 67, 67);
+    color: #fff;
+    left: 0px;
+    top: 39px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 7px 7px 30px 0px rgba(0, 0, 0, 0.4), -7px -7px 30px 0px rgba(0, 0, 0, 0.4);
+    transition: visibility 0.3s ease-out, opacity 0.3s ease-out;
+    visibility: hidden;
+    opacity: 0%;
+    z-index: 12;
+    border: 1px solid rgb(111, 111, 111)
+}
+
+.addOptionLight
+{
+    text-align: left;
+    padding: 9px !important;
+    margin: 0px;
+    border-bottom: 1px solid rgb(188, 188, 188);
+}
+.addOptionDark
+{
+    text-align: left;
+    padding: 9px !important;
+    margin: 0px;
+    border-bottom: 1px solid rgb(111, 111, 111)
+}
+
+.countdownsMenuItem
+{
+    display: block;
+    padding: 9px;
+    margin: 0px;
+    height: 30px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+.countdownsMenuItemLight
+{
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-bottom: 1px solid rgb(188, 188, 188);
+}
+.countdownsMenuItemDark
+{
+    position: relative;
+    background-color: rgb(67, 67, 67);
+    color: rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(111, 111, 111);
+}
+.selectedCountdown
+{
+    background-color: #218dff;
+    color: white;
+}
+
+.countdownsMenuItemName
+{
+    display: block;
+    overflow-x: scroll;
+}
+
+.miniProgressBarOuterLight
+{
+    position: relative;
+	height: 8px;
+	margin-top: 5px;
+	border-radius: 12px;
+	background: rgb(207,207,207);
+	background: linear-gradient(180deg, rgba(203,203,203,1) 0%, rgba(255,255,255,1) 100%);
+	box-shadow: inset 0px -1px 0px 0px #d7d7d7, inset 0px 1px 0px 0px #b9b9b9;
+    overflow: hidden
+}
+.miniProgressBarOuterDark
+{
+    position: relative;
+    height: 8px;
+    margin-top: 5px;
+    border-radius: 12px;
+    background: rgb(207,207,207);
+    background: linear-gradient(180deg, rgb(26, 26, 26) 0%, rgb(113, 113, 113) 100%);
+    box-shadow: inset 0px -1px 0px 0px #737373, inset 0px 1px 0px 0px #4f4f4f;
+    overflow: hidden
+}
+.miniProgressBarInnerLight
+{
+    position: relative;
+	height: 8px;
+	background: linear-gradient(180deg, rgba(135,135,135,1) 0%, rgba(20,20,20,1) 100%);
+	margin-bottom: 5px;
+	border-radius: 12px
+}
+.miniProgressBarInnerDark
+{
+    position: relative;
+    height: 8px;
+    background: linear-gradient(180deg, rgb(219, 219, 219) 0%, rgb(132, 132, 132) 100%);
+    margin-bottom: 5px;
+    border-radius: 12px;
+}
+
+#countdownsMenuFooter
+{
+    position: relative;
+    margin: 0px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    height: 41px;
+    z-index: 11;
+}
+.countdownsMenuFooterLight
+{
+    border-top: 1px solid rgb(188, 188, 188);
+    background-color: rgba(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+.countdownsMenuFooterDark
+{
+    border-top: 1px solid rgb(111, 111, 111);
+    background-color: rgba(67, 67, 67);
+    color: rgb(255, 255, 255);
+}
+#deleteCountdownsButton
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 5px;
+    width: calc(100% - 14px);
+    text-align: center;
+    box-sizing: border-box;
+    transform: translate(-50%, -50%);
+}
+
+.greyedOutCountdown
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    transition: visibility 0.3s ease-out, opacity 0.3s ease-out;
+    visibility: hidden;
+    opacity: 0%;
+    z-index: 11;
+    background-color: rgba(0, 0, 0, 0.5)
+}
+
+.greyedOutCountdown div
+{
+    position: absolute;
+    width: 38px;
+    height: 38px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.greyedOutCountdown img
+{
+    height: 100%
+}
+
+#importCountdownInput
+{
+    overflow: scroll;
+    margin-bottom: 6px;
+    margin-top: 6px;
+    padding: 5px;
+    word-wrap: break-word;
+    height: 200px;
+    width: 100%;
+    resize: none
+}

@@ -1,0 +1,354 @@
+
+.settingsGroup
+{
+    text-align: left;
+    margin: 0px;
+    margin-top: 13px
+}
+
+.settingsTitle
+{
+    font-size: 10pt;
+    color: gray;
+    padding: 9px
+}
+
+.settingsHeader
+{
+    font-size: 10pt;
+    display: block;
+    color: gray;
+    padding-top: 4px;
+    padding-left: 9px;
+}
+
+.settingsItem
+{
+    border-radius: 4px;
+    width: calc(100% - 14px);
+    margin: auto;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.settingsButton
+{
+    border-radius: 5px;
+    width: calc(100% - 14px);
+    margin: auto;
+    margin-top: 5px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.settingsSelectors
+{
+    border-radius: 4px;
+    width: calc(100% - 14px);
+    margin: auto;
+    margin-top: 5px;
+    overflow: hidden
+}
+
+.settingsElementLight
+{
+    background-color: white;
+    border: 1px solid #c2c2c2;
+    box-sizing: border-box;
+}
+
+.settingsElementDark
+{
+    background-color: rgb(67, 67, 67);
+    border: 1px solid rgb(111, 111, 111);
+    box-sizing: border-box;
+}
+
+.settingsSelector
+{
+    width: 100%;
+    padding: 9px;
+    box-sizing: border-box;
+    position: relative;
+}
+.settingsSelectorLight
+{
+    border-bottom: 1px solid lightgrey;
+}
+.settingsSelectorDark
+{
+    border-bottom: 1px solid rgb(111, 111, 111);
+}
+
+.settingsSelectorName
+{
+    text-align: left;
+}
+
+.settingsSelectedValueArrow
+{
+    position: absolute;
+    right: 3px;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+.settingsSelectorValue
+{
+    color: #9d9d9d;
+    bottom: 0px;
+    right: 37px;
+    position: relative;
+}
+
+.settingsDropdownButton
+{
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    margin: 0px;
+    transform: translateY(-50%);
+}
+
+.downArrow
+{
+    width: 100%;
+}
+
+.tickIcon
+{
+    width: 16px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 8px;
+}
+
+#selectorWindowTimeRemaining
+{
+    width: 220px;
+}
+#selectorWindowMilestoneLabelFormat
+{
+    width: 150px;
+}
+#selectorWindowNotificationSetting
+{
+    width: 160px;
+}
+#selectorWindowLanguage
+{
+    width: 160px;
+}
+
+.selectorWindowLight
+{
+    position: absolute;
+    background-color: #fff;
+    color: #000;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 7px 7px 30px 0px rgba(115, 115, 115, 0.4), -7px -7px 30px 0px rgba(115, 115, 115, 0.4);
+    transition: visibility 0.3s ease-out, opacity 0.3s ease-out;
+    visibility: hidden;
+    opacity: 0%;
+    z-index: 1;
+    border: 1px solid #c2c2c2;
+    box-sizing: border-box;
+}
+
+.selectorWindowItemLight
+{
+    width: 100%;
+    padding: 9px;
+    border-bottom: 1px solid lightgrey;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.selectorWindowDark
+{
+    position: absolute;
+    background-color: rgb(67, 67, 67);
+    color: #fff;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 7px 7px 30px 0px rgba(0, 0, 0, 0.4), -7px -7px 30px 0px rgba(0, 0, 0, 0.4);
+    transition: visibility 0.3s ease-out, opacity 0.3s ease-out;
+    visibility: hidden;
+    opacity: 0%;
+    z-index: 1;
+    border: 1px solid rgb(111, 111, 111);
+    box-sizing: border-box;
+}
+
+.selectorWindowItemDark
+{
+    width: 100%;
+    padding: 9px;
+    border-bottom: 1px solid rgb(111, 111, 111);
+    box-sizing: border-box;
+    position: relative;
+}
+
+#themeIconsContainer
+{
+    display: flex;
+    flex-flow: row;
+    width: 100%
+}
+
+.themeIcons, .themeIconsSelected
+{
+    flex: 1 1 auto;
+    margin: 5px;
+    overflow: hidden;
+    width: 100%
+}
+
+.themeIcons img
+{
+    width: 100%;
+    border: 2px solid #acacac;
+    box-sizing: border-box;
+    border-radius: 7px
+}
+
+.themeIcons p
+{
+    font-size: 10pt;
+    text-align: center;
+    margin: 0px
+}
+
+.themeIconsSelected img
+{
+    width: 100%;
+    border: 4px solid rgb(20, 134, 255);
+    box-sizing: border-box;
+    border-radius: 7px
+}
+
+.themeIconsSelected p
+{
+    font-size: 10pt;
+    text-align: center;
+    margin: 0px;
+    font-weight: bold
+}
+
+#tabContainer
+{
+	margin: 0px;
+	padding: 0px
+}
+
+#tabWallpaperLight
+{
+	left: 9px;
+}
+#tabWallpaperDark
+{
+	left: 15px;
+}
+
+@media only screen and (min-width: 1000px)
+{
+    .row
+    {
+        display: flex;
+        flex-flow: row;
+        width: 100%;
+        position: relative
+    }
+    #tabViews
+    {
+        margin: 0px;
+        padding: 3px;
+        border-radius: 4px
+    }
+}
+@media only screen and (max-width: 999px)
+{
+    .row
+    {
+        display: flex;
+        flex-flow: row;
+        width: 100%;
+        min-width: 486px;
+        position: relative
+    }
+    #tabViews
+    {
+        margin: 0px;
+        padding: 3px;
+        border-radius: 4px;
+        overflow-y: scroll;
+    }
+}
+
+.backgroundGridIcon
+{
+    flex: 1 1 auto;
+    border-radius: 8px;
+    width: 100%;
+    padding: 3px
+}
+.backgroundGridIcon img
+{
+    border-radius: 8px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+}
+.backgroundGridIcon p
+{
+    font-size: 10pt;
+    margin-top: 1px;
+    margin-bottom: 3px;
+    text-align: center;
+}
+
+#defaultGridIconLight
+{
+    border-radius: 8px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 130px;
+    background-color: white;
+    border: 1px solid #b5b5b5;
+}
+
+#defaultGridIconDark
+{
+    border-radius: 8px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 130px;
+    background-color: black
+}
+
+.gridIconSelected img, .gridIconSelected div
+{
+    border: 4px solid rgb(20, 134, 255) !important;
+    box-sizing: border-box !important;
+    border-radius: 7px !important;
+}
+
+.gridIconSelected p
+{
+    font-weight: bold !important;
+}
+
+#customBackgroundUrlInputLight, #customBackgroundUrlInputDark
+{
+    width: 100%;
+}

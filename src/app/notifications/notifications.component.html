@@ -1,0 +1,69 @@
+<div id="openNotificationsButton"
+     [class.openNotificationsButtonLight]="themeIsLight()"
+     [class.openNotificationsButtonDark]="themeIsDark()"
+     [class.dialogButtonLight]="themeIsLight()"
+     [class.dialogButtonDark]="themeIsDark()" 
+     (click)="openNotifications()">
+    <div id="notificationsIcon"> <img [src]="themeIsLight() ? 'notificationsLight.svg' : 'notificationsDark.svg'"> </div>
+</div>
+
+<div id="notificationsMenuWrapper" [class.notificationsMenuWrapperShow]="showNotifications()">
+<div id="notificationsMenu"
+[class.notificationsMenuLight]="themeIsLight()"
+[class.notificationsMenuDark]="themeIsDark()"
+[class.showMenu]="showNotifications()"
+[class.hideMenu]="!showNotifications()">
+
+    <div id="notificationsMenuHeader"
+    [class.notificationsMenuHeaderLight]="themeIsLight()"
+    [class.notificationsMenuHeaderDark]="themeIsDark()">
+    <span>
+        Notifications
+        <div id="closeNotificationsButton"
+        [class.dialogButtonLight]="themeIsLight()"
+        [class.dialogButtonDark]="themeIsDark()"
+        (click)="openNotifications(false)">
+            <img [src]="themeIsLight() ? 'closeLight.svg' : 'closeDark.svg'">
+        </div>
+    </span>
+    </div>
+
+    <div id="notificationList">
+    @for(notification of this.getNotifications(); track $index)
+    {
+        <div class="notificationItem" [class.notificationItemLight]="themeIsLight()" [class.notificationItemDark]="themeIsDark()">
+            <div class="notificationItemMessage">{{notification.message}}</div>
+            <div class="notificationItemDate">{{notification.timestamp | date: 'MMMM d H:MM'}}</div>
+            <div class="notificationItemShowButton" [class.dialogButtonActionLight]="themeIsLight()" [class.dialogButtonActionDark]="themeIsDark()" (click)="openNotification(notification.countdown, notification.milestone)">Show</div>
+            <div class="notificationItemDismissButton" [class.dialogButtonLight]="themeIsLight()" [class.dialogButtonDark]="themeIsDark()" (click)="deleteNotification($index)">Dismiss</div>
+        </div>
+    }
+    @if(this.getNotifications().length == 0)
+    {
+        <div id="noNotificationsPlaceholder">No Notifications</div>
+    }
+    </div>
+
+    @if(twoOrMoreNotifications())
+    {
+        <div id="notificationsMenuFooter" [class.notificationsMenuFooterLight]="themeIsLight()" [class.notificationsMenuFooterDark]="themeIsDark()">
+            <div id="clearAllNotificationsButton" [class.dialogButtonLight]="themeIsLight()" [class.dialogButtonDark]="themeIsDark()" (click)="clearAllNotifications()">
+                Clear All Notifications
+            </div>
+        </div>
+    }
+    
+</div>
+</div>
+
+<div id="newNotificationsList" [class.showNewNotificationsList]="showNewNotifications()">
+    @for(notification of this.getNewNotifications(); track $index)
+    {
+        <div class="notificationItem newNotificationItem" [class.notificationItemLight]="themeIsLight()" [class.notificationItemDark]="themeIsDark()">
+            <div class="notificationItemMessage">{{notification.message}}</div>
+            <div class="notificationItemDate">{{notification.timestamp | date: 'MMMM d h:mm'}}</div>
+            <div class="notificationItemShowButton" [class.dialogButtonActionLight]="themeIsLight()" [class.dialogButtonActionDark]="themeIsDark()" (click)="openNotification(notification.countdown, notification.milestone)">Show</div>
+            <div class="notificationItemDismissButton" [class.dialogButtonLight]="themeIsLight()" [class.dialogButtonDark]="themeIsDark()" (click)="deleteNotificationByCountdownMilestone(notification.countdown, notification.milestone);deleteNewNotification($index)">Dismiss</div>
+        </div>
+    }
+</div>

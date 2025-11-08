@@ -1,0 +1,27 @@
+@if(milestoneIsSelected())
+{
+    <span id="notesTitle">'{{this.milestoneNotesService.selectedMilestoneName()}}' Notes:</span>
+    <textarea id="notesInput"
+    [class.inputLight]="themeIsLight()"
+    [class.inputDark]="themeIsDark()"
+    [ngModel]="this.milestoneNotesService.editNotes()" (ngModelChange)="this.milestoneNotesService.editNotes.set($event); validateNotes()"></textarea>
+    
+    @if(this.showSaveButton())
+    {
+        <div
+        id="notesSaveButton"
+        [class.dialogButtonActionLight]="themeIsLight()"
+        [class.dialogButtonActionDark]="themeIsDark()"
+        (click)="saveNotes()">Save</div>
+    }
+
+    @if(this.showErrorText())
+    {   
+        <div id="notesErrorText">Notes must be 2000 characters or less</div>
+    }
+}
+@else
+{
+    <span id="noMilestoneSelectedText">Click a milestone on the progress bar to see it's notes</span>
+}
+

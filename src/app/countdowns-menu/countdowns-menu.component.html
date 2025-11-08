@@ -1,0 +1,111 @@
+<div id="countdownsMenuIconOuter"
+     [class.countdownsMenuIconOuterLight]="themeIsLight()"
+     [class.countdownsMenuIconOuterDark]="themeIsDark()"
+     [class.dialogButtonLight]="themeIsLight()"
+     [class.dialogButtonDark]="themeIsDark()" 
+     (click)="openCountdownsMenu()">
+    <div class="countdownsMenuIconLine firstMenuLine" [class.menuLineLight]="themeIsLight()" [class.menuLineDark]="themeIsDark()"></div>
+    <div class="countdownsMenuIconLine" [class.menuLineLight]="themeIsLight()" [class.menuLineDark]="themeIsDark()"></div>
+    <div class="countdownsMenuIconLine" [class.menuLineLight]="themeIsLight()" [class.menuLineDark]="themeIsDark()"></div>
+</div>
+
+<div id="countdownsMenu"
+[class.countdownsMenuLight]="themeIsLight()"
+[class.countdownsMenuDark]="themeIsDark()"
+[class.showMenu]="showCountdownsMenu()"
+[class.hideMenu]="!showCountdownsMenu()">
+
+<div id="countdownsMenuHeader"
+[class.countdownsMenuHeaderLight]="themeIsLight()"
+[class.countdownsMenuHeaderDark]="themeIsDark()">
+    <span>
+        @if(countdownCountWithinLimit())
+        {
+        <div id="addCountdownButton"
+        [class.dialogButtonActionLight]="themeIsLight()"
+        [class.dialogButtonActionDark]="themeIsDark()"
+        (click)="toggleAddOptions()">
+            <img src="add.svg">
+        </div>
+        }
+        All Countdowns
+        <div id="closeCountdownsMenu"
+        [class.dialogButtonLight]="themeIsLight()"
+        [class.dialogButtonDark]="themeIsDark()"
+        (click)="openCountdownsMenu(false)">
+            <img [src]="themeIsLight() ? 'closeLight.svg' : 'closeDark.svg'">
+        </div>
+    </span>
+    <div id="addOptions"
+         [class.addOptionsLight]="themeIsLight()"
+         [class.addOptionsDark]="themeIsDark()"
+         [class.opacityFull]="showAddOptions()">
+        <p [class.addOptionLight]="themeIsLight()" [class.addOptionDark]="themeIsDark()" (click)="addCountdown()">New Empty Countdown</p>
+        <p [class.addOptionLight]="themeIsLight()" [class.addOptionDark]="themeIsDark()" (click)="addCountdown(true)">New Year-to-Year Countdown</p>
+        <p [class.addOptionLight]="themeIsLight()" [class.addOptionDark]="themeIsDark()" class="lastItem" (click)="openImportCountdown()">Import Existing Countdown</p>
+    </div>
+</div>
+
+<div class="greyedOutBackground lightGreyedOutBackground" [class.opacityFull]="showImportCountdown()"></div>
+
+<div [class.dialogLight]="themeIsLight()" [class.dialogDark]="themeIsDark()" [class.opacityFull]="showImportCountdown()">
+    <header>Import Countdown</header>
+    @if(errorText().length != 0){ <p>{{errorText()}}</p> }
+    <p>Paste the text of an exported countdown here:</p>
+    <textarea id="importCountdownInput" [class.inputLight]="themeIsLight()" [class.inputDark]="themeIsDark()" [(ngModel)]="importedCountdownText"></textarea>
+    <div [class.dialogButtonActionLight]="themeIsLight()" [class.dialogButtonActionDark]="themeIsDark()" (click)="importCountdown()">Import</div>
+    <div [class.dialogButtonLight]="themeIsLight()" [class.dialogButtonDark]="themeIsDark()" (click)="openImportCountdown(false)">Cancel</div>
+</div>
+
+<div id="countdownsMenuItemsContainer">
+@for(countdown of this.countdownsMenuService.countdowns(); track $index)
+{
+    <div class="countdownsMenuItem"
+        [class.countdownsMenuItemLight]="themeIsLight()"
+        [class.countdownsMenuItemDark]="themeIsDark()"
+        [class.selectedCountdown]="$index == this.selectedCountdown()">
+        <div class="greyedOutCountdown" [class.opacityFull]="showDeleteButtons()">
+                <div class="deleteButton" [class.dialogButtonWarningLight]="themeIsLight()" [class.dialogButtonWarningDark]="themeIsDark()" (click)="openDeleteDialog(true, $index)">
+                    <img src="delete.svg">
+                </div>
+        </div>
+
+        <div class="countdownsMenuItemMinusDeleteButton" (click)="switchCountdown($index)">
+            <span class="countdownsMenuItemName">{{countdown.name.length == 0 ? ('countdown ' + ($index+1)) : countdown.name}}</span>
+            <div [class.miniProgressBarOuterLight]="themeIsLight()" [class.miniProgressBarOuterDark]="themeIsDark()">
+                <div [class.miniProgressBarInnerLight]="themeIsLight()" [class.miniProgressBarInnerDark]="themeIsDark()" [style.width.%]="getBarLength($index)()"></div>
+            </div>
+        </div>
+    </div>
+}
+</div>
+
+@if(!oneCountdownLeft())
+{
+    <div class="greyedOutBackground lightGreyedOutBackground" [class.opacityFull]="showDeleteConfirm() && countdownToDelete() != -1"></div>
+
+    <div [class.dialogLight]="themeIsLight()" [class.dialogDark]="themeIsDark()" [class.opacityFull]="showDeleteConfirm() && countdownToDelete() != -1">
+        <header>Delete "{{getCountdownName(countdownToDelete())()}}" Countdown?</header>
+        <p>Are you sure you want to delete this countdown?</p>
+        <div [class.dialogButtonWarningLight]="themeIsLight()" [class.dialogButtonWarningDark]="themeIsDark()" (click)="deleteCountdown(countdownToDelete())">Delete</div>
+        <div [class.dialogButtonLight]="themeIsLight()" [class.dialogButtonDark]="themeIsDark()" (click)="openDeleteDialog(false)">Cancel</div>
+    </div>
+
+    <div id="countdownsMenuFooter"
+class="lastItem"
+[class.countdownsMenuFooterLight]="themeIsLight()"
+[class.countdownsMenuFooterDark]="themeIsDark()">
+<div id="deleteCountdownsButton" [class.dialogButtonWarningLight]="themeIsLight()" [class.dialogButtonWarningDark]="themeIsDark()" (click)="toggleDeleteButtons()">
+    @if(!showDeleteButtons())
+    {
+        Delete Countdown
+    }
+    @else
+    {
+        Done
+    }
+    </div>
+    </div>
+}
+
+</div>

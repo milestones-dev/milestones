@@ -1,0 +1,32 @@
+<div id="timeRemainingContainer" [class.timeRemainingLight]="themeIsLight()" [class.timeRemainingDark]="themeIsDark()" (click)="toggleMilestoneInfo()">
+    {{getTimeRemaining()}}
+    <div id="openCloseMilestonesInfoButton"
+     [class.openCloseMilestonesInfoButtonLight]="themeIsLight()"
+     [class.openCloseMilestonesInfoButtonDark]="themeIsDark()"
+     [class.dialogButtonLight]="themeIsLight()"
+     [class.dialogButtonDark]="themeIsDark()">
+        <img id="openCloseMilestonesInfoImg" [src]="getOpenCloseMilestonesInfoImgSrc()">
+    </div>
+</div>
+
+<div id="outerProgressContainer">
+    <div id="outerProgress" [class.outerProgressLight]="themeIsLight()" [class.outerProgressDark]="themeIsDark()">
+		<div id="innerProgress" [style.backgroundColor]="getBarColour()" [style.width.%]="getBarLength()"></div>
+        <div id="percentageLabel">{{getPercentageLabelText()}}%</div>
+	</div>
+	
+    @for(milestone of getMilestones(); track $index)
+    {
+        <div class="marker" [style.left.%]="getMilestoneOffset($index)()"
+                            [class.markerSelected]="isSelectedMilestone($index)()"
+                            [class.markerLight]="themeIsLight()"
+                            [class.markerDark]="themeIsDark()"></div>
+	    <div class="label" [style.left.%]="getMilestoneOffset($index)()"
+                           (click)="selectMilestone($index)"
+                           [class.labelSelected]="isSelectedMilestone($index)()"
+                           [class.labelLight]="themeIsLight()"
+                           [class.labelDark]="themeIsDark()">
+                           {{getMilestoneLabelText($index)()}}
+        </div>
+    }
+</div>

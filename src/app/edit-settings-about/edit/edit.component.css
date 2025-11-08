@@ -1,0 +1,336 @@
+.inputGroup
+{
+    text-align: left;
+    margin: 0px;
+    margin-top: 13px;
+}
+
+.inputGroupMilestones
+{
+    padding: 7px
+}
+
+.countdownInputsLight
+{
+    background-color: white;
+    border: 1px solid #c2c2c2;
+    box-sizing: border-box;
+}
+
+.countdownInputsDark
+{
+    background-color: rgb(67, 67, 67);
+    border: 1px solid rgb(111, 111, 111);
+    box-sizing: border-box;
+}
+
+#countdownValuesInputs
+{
+    border-radius: 4px;
+    width: calc(100% - 14px);
+    margin: auto;
+    margin-top: 7px;
+    overflow: hidden
+}
+.endDateInputLight
+{
+    border-bottom: 0px !important;
+}
+.endDateInputDark
+{
+    border-bottom: 0px !important;
+}
+
+.countdownMilestonesInputs
+{
+    position: relative;
+    display: flex;
+    flex-flow: row;
+    border-radius: 4px;
+    width: calc(100% - 14px);
+    margin: auto;
+    margin-top: 7px;
+    overflow: hidden;
+}
+.milestoneNameAndDateInputs
+{
+    flex: 1 1 auto
+}
+.milestoneNameAndDateInputs input
+{
+    width: 70%;
+}
+.milestoneNotesInputs
+{
+    flex: 1 1 auto;
+    width: auto !important;
+}
+.milestoneNotesInputsLight
+{
+    border-bottom: 1px solid white !important;
+    border-left: 1px solid lightgrey
+}
+.milestoneNotesInputsDark
+{
+    border-bottom: 1px solid rgb(67, 67, 67) !important;
+    border-left: 1px solid rgb(111, 111, 111)
+}
+.milestoneNotesInputs input, .milestoneNotesInputs textarea
+{
+    position: absolute;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    resize: none;
+    font-size: 10pt;
+    top: calc(50% - 1px);
+    width: calc(100% - 11px);
+    box-sizing: border-box;
+    height: calc(100% - 11px);
+    left: 5px
+}
+
+.milestoneDateInputsLight
+{
+    border-bottom: 1px solid white !important;
+}
+.milestoneDateInputsDark
+{
+    border-bottom: 1px solid rgb(67, 67, 67) !important;
+}
+
+.countdownInput
+{
+    width: 100%;
+    padding: 9px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.countdownInputLight
+{
+    border-bottom: 1px solid lightgrey
+}
+
+.countdownInputDark
+{
+    border-bottom: 1px solid rgb(111, 111, 111);
+}
+
+.lastItem
+{
+    border-bottom: 0px !important
+}
+
+.countdownInputBox
+{
+    position: absolute;
+    width: 50%;
+    min-width: 50%;
+    height: 22px;
+    min-height: 22px;
+    appearance: none;
+    right: 6px;
+    top: calc(50%);
+    transform: translateY(-50%);
+    font-family: -apple-system,BlinkMacSystemFont,sans-serif;
+    font-size: 10pt
+}
+
+.editHeaders
+{
+    font-size: 10pt;
+    color: gray;
+}
+#countdownValuesEditHeader
+{
+    padding: 9px;
+}
+
+#addDeleteMilestoneButtons
+{
+    margin-top: 35px
+}
+
+#addMilestoneButton
+{
+    margin-bottom: 7px;
+}
+
+#addMilestoneButton div
+{
+    text-align: center !important;
+}
+
+#deleteMilestoneButton
+{
+    margin-bottom: 7px;
+    text-align: center;
+}
+
+.greyedOutMilestone
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    transition: visibility 0.3s ease-out, opacity 0.3s ease-out;
+    visibility: hidden;
+    opacity: 0%;
+    z-index: 11;
+    background-color: rgba(0, 0, 0, 0.5)
+}
+
+.greyedOutMilestone div
+{
+    position: absolute;
+    width: 38px;
+    height: 38px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.greyedOutMilestone img
+{
+    height: 100%
+}
+
+#exportCountdownInput, #errorDialogInput
+{
+    overflow: scroll;
+    margin-bottom: 6px;
+    margin-top: 6px;
+    padding: 5px;
+    word-wrap: break-word;
+    max-height: 200px;
+}
+
+#errorDialogUL
+{
+    padding-left: 15px;
+}
+
+#errorDialogUL li
+{
+    margin-bottom: 10px;
+}
+
+
+.milestoneInputs
+{
+	position: relative;
+	width: 100%;
+	height: 65px;
+	overflow: hidden;
+    margin-top: 7px;
+	border-radius: 4px
+}
+.milestoneInputsLight
+{
+    color: black;
+    background-color: white;
+    border: 1px solid #c2c2c2;
+    box-sizing: border-box;
+}
+.milestoneInputsDark
+{
+    color: white;
+    background-color: rgb(67, 67, 67);
+    border: 1px solid rgb(111, 111, 111);
+    box-sizing: border-box;
+}
+.nameAndDate
+{
+	position: absolute;
+	left: 0px;
+	width: 50%;
+	height: 100%
+}
+.notes
+{
+	position: absolute;
+	left: 50%;
+	width: 50%;
+	height: 100%;
+	padding: 6px;
+	box-sizing: border-box;
+	padding-left: 0px
+}
+
+.nameInput, .dateInput
+{
+	position: relative;
+	height: 50%;
+	padding: 6px;
+	box-sizing: border-box
+}
+.dateInput
+{
+	padding-top: 3px
+}
+.dateInput span
+{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 10px
+}
+.nameInput
+{
+	padding-bottom: 3px
+}
+.nameInput span
+{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 10px
+}
+
+.milestoneTextbox
+{
+	display: block;
+	width: 70%;
+	height: 100%;
+    min-width: 70%;
+	min-height: 100%;
+    appearance: none;
+	border: 2px solid rgb(170, 170, 170);
+	border-radius: 4px;
+	box-sizing: border-box;
+  	float: right;
+    font-family: -apple-system,BlinkMacSystemFont,sans-serif;
+    font-size: 10pt
+}
+.milestoneTextboxLight
+{
+    color: #000;
+    background-color: #fff
+}
+.milestoneTextboxDark
+{
+    color: #fff;
+    background-color: rgb(67, 67, 67);
+}
+.milestoneTextarea
+{
+	display: block;
+  	width: 100%;
+  	height: 100%;
+  	border: 2px solid rgb(170, 170, 170);
+  	border-radius: 4px;
+  	box-sizing: border-box;
+	margin: 0px;
+	resize: none;
+    font-family: -apple-system,BlinkMacSystemFont,sans-serif;
+    font-size: 10pt
+}
+.milestoneTextareaLight
+{
+    color: #000;
+    background-color: #fff
+}
+.milestoneTextareaDark
+{
+    color: #fff;
+    background-color: rgb(67, 67, 67);
+}

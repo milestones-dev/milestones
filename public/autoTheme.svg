@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<svg width="120" height="72" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+<defs>
+	<clipPath id="halfClip">
+		<rect x="0" y="0" height="72" width="59" />
+	</clipPath>
+</defs>
+
+<g>
+<rect x="0" y="0" width="120" height="72" fill="#fff" />
+
+<rect x="5" y="27" width="110" height="15" fill="#000000" />
+
+<rect x="38" y="34" width="44" height="33" fill="#dbdbdb" />
+<rect x="42" y="48" width="36" height="3" fill="#000000" />
+<rect x="42" y="54" width="36" height="3" fill="#000000" />
+<rect x="42" y="60" width="36" height="3" fill="#000000" />
+
+<text x="34" y="19" fill="#000000" style="font-family: sans-serif; font-weight: bold; font-size: 12pt">9 Days</text>
+</g>
+
+<g clip-path="url(#halfClip)">
+<rect x="0" y="0" width="120" height="72" fill="#000" />
+
+<rect x="5" y="27" width="110" height="15" fill="#a9a9a9" />
+
+<rect x="38" y="34" width="44" height="33" fill="#6e6e6e" />
+<rect x="42" y="48" width="36" height="3" fill="#f1f1f1" />
+<rect x="42" y="54" width="36" height="3" fill="#f1f1f1" />
+<rect x="42" y="60" width="36" height="3" fill="#f1f1f1" />
+
+<text x="34" y="19" fill="#fff" style="font-family: sans-serif; font-weight: bold; font-size: 12pt">9 Days</text>
+</g>
+
+</svg>

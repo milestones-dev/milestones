@@ -1,0 +1,49 @@
+<div class="greyedOutBackground" [class.lightGreyedOutBackground]="themeIsLight()" [class.darkGreyedOutBackground]="themeIsDark()" [class.opacityFull]="showWindow()"></div>
+
+<div id="editSettingsAboutContainer" [class.lightModePanelBackground]="themeIsLight()" [class.darkModePanelBackground]="themeIsDark()" [class.opacityFull]="showWindow()">
+    <div id="editSettingsAboutHeader" [class.headerLight]="themeIsLight()" [class.headerDark]="themeIsDark()">
+        <div id="openSidebarMobileButton" [class.dialogButtonLight]="themeIsLight()" [class.dialogButtonDark]="themeIsDark()" (click)="toggleSidebarMobile()">
+            <div class="menuIconLine firstMenuLine" [class.menuIconLineLight]="themeIsLight()" [class.menuIconLineDark]="themeIsDark()"></div>
+            <div class="menuIconLine" [class.menuIconLineLight]="themeIsLight()" [class.menuIconLineDark]="themeIsDark()"></div>
+            <div class="menuIconLine" [class.menuIconLineLight]="themeIsLight()" [class.menuIconLineDark]="themeIsDark()"></div>
+        </div>
+        @if(showEdit()){ <div id="exportButton" [class.dialogButtonActionLight]="themeIsLight()" [class.dialogButtonActionDark]="themeIsDark()" (click)="exportCountdown()"><span>Export</span></div> }
+        {{ getHeader() }}
+        <div id="saveButton" [class.dialogButtonActionLight]="themeIsLight()" [class.dialogButtonActionDark]="themeIsDark()" (click)="saveAndClose()"><span>Save</span></div>
+    </div>
+
+    <div id="sidebarAndView">
+        <div id="editSettingsAboutSidebar" [class.darkSidebar]="themeIsDark()" [class.lightSidebar]="themeIsLight()" [class.showSidebarMobile]="showSidebarMobile()" [class.editSettingsAboutSidebarMobileLight]="themeIsLight()" [class.editSettingsAboutSidebarMobileDark]="themeIsDark()">
+            <div [class.sidebarItemLight]="themeIsLight()" [class.sidebarItemDark]="themeIsDark()" (click)="openEdit()" [class.sidebarItemSelected]="showEdit()">Edit Countdown</div>
+            <div [class.sidebarItemLight]="themeIsLight()" [class.sidebarItemDark]="themeIsDark()" (click)="openSettings()" [class.sidebarItemSelected]="showSettings()">Settings</div>
+            <div [class.sidebarItemLight]="themeIsLight()" [class.sidebarItemDark]="themeIsDark()" (click)="openAbout()" [class.sidebarItemSelected]="showAbout()">About</div>
+        </div>
+
+        <div id="editSettingsAboutView" [class.editSettingsAboutLight]="themeIsLight()" [class.editSettingsAboutDark]="themeIsDark()">
+            @if(showWindow() && showEdit()){ <app-edit></app-edit> }
+            @if(showWindow() && showSettings()){ <app-settings></app-settings> }
+            @if(showWindow() && showAbout())
+            {
+                <div id="infoGroup" [class.infoGroupLight]="themeIsLight()" [class.infoGroupDark]="themeIsDark()">
+                    <div class="infoLine" [class.infoLineLight]="themeIsLight()" [class.infoLineDark]="themeIsDark()">
+                        <div class="infoLineKey" [class.textLight]="themeIsLight()" [class.textDark]="themeIsDark()">Milestones Version</div>
+                        <div class="infoLineValue">6.1 (November 2025)</div>
+                    </div>
+                    <div class="infoLine" [class.infoLineLight]="themeIsLight()" [class.infoLineDark]="themeIsDark()">
+                        <div class="infoLineKey" [class.textLight]="themeIsLight()" [class.textDark]="themeIsDark()">Angular</div>
+                        <div class="infoLineValue">20.3.7</div>
+                    </div>
+                    <div class="infoLine lastItem" [class.infoLineLight]="themeIsLight()" [class.infoLineDark]="themeIsDark()">
+                        <div class="infoLineKey" [class.textLight]="themeIsLight()" [class.textDark]="themeIsDark()">Countdowns</div>
+                        <div class="infoLineValue">{{countdownCount()}}</div>
+                    </div>
+                </div>
+
+                <p id="appDescription" [class.textLight]="themeIsLight()" [class.textDark]="themeIsDark()">Milestones is a web app for visually measuring how far you are towards reaching a certain day, and allows you to plot milestones that happen along the way.</p>
+            }
+        </div>
+    </div>
+</div>
+
+<div id="editButton" (click)="openEdit()"><img [src]="themeIsLight() ? 'edit.svg' : 'editDark.svg'" /></div>
+<div id="settingsButton" (click)="openSettings()"><img [src]="themeIsLight() ? 'settings.svg' : 'settingsDark.svg'" /></div>
