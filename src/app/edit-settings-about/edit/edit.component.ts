@@ -1,4 +1,4 @@
-import { Component, computed } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { EditService } from './edit.service';
 import { Countdown, Show } from '../../app.model';
 import { SettingsService } from '../settings/settings.service';
@@ -11,7 +11,8 @@ import { AppService } from '../../app.service';
   selector: 'app-edit',
   imports: [FormsModule, DatePipe],
   templateUrl: './edit.component.html',
-  styleUrl: './edit.component.css'
+  styleUrl: './edit.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EditComponent
 {

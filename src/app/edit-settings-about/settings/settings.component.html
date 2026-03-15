@@ -276,11 +276,12 @@
     <span class="settingsTitle">RESET</span>
 
     <div class="settingsButton" [class.dialogButtonWarningLight]="CurrentTheme() == Light()" [class.dialogButtonWarningDark]="CurrentTheme() == Dark()" (click)="openResetYear()">Reset to Year-to-Year Countdown</div>
-    <div class="settingsButton" [class.dialogButtonWarningLight]="CurrentTheme() == Light()" [class.dialogButtonWarningDark]="CurrentTheme() == Dark()" (click)="openResetEmpty()">Reset All Countdown Values</div>
+    <div class="settingsButton" [class.dialogButtonWarningLight]="CurrentTheme() == Light()" [class.dialogButtonWarningDark]="CurrentTheme() == Dark()" (click)="openResetMonth()">Reset to Month-to-Month Countdown</div>
+    <div class="settingsButton" [class.dialogButtonWarningLight]="CurrentTheme() == Light()" [class.dialogButtonWarningDark]="CurrentTheme() == Dark()" (click)="openResetEmpty()">Reset to Empty Countdown</div>
     <div class="settingsButton" [class.dialogButtonWarningLight]="CurrentTheme() == Light()" [class.dialogButtonWarningDark]="CurrentTheme() == Dark()" (click)="openResetSettings()">Reset Settings to Default</div>
 </div>
 
-<div class="greyedOutBackground lightGreyedOutBackground" [class.opacityFull]="showResetYear() || showResetEmpty() || showResetSettings()"></div>
+<div class="greyedOutBackground" [class.opacityFull]="showResetMonth() || showResetYear() || showResetEmpty() || showResetSettings()"></div>
 
 <div [class.dialogLight]="CurrentTheme() == Light()" [class.dialogDark]="CurrentTheme() == Dark()" [class.opacityFull]="showResetYear()">
     <header>Reset to Empty Year-to-Year Countdown?</header>
@@ -289,8 +290,15 @@
     <div [class.dialogButtonLight]="CurrentTheme() == Light()" [class.dialogButtonDark]="CurrentTheme() == Dark()" (click)="openResetYear(false)">Cancel</div>
 </div>
 
+<div [class.dialogLight]="CurrentTheme() == Light()" [class.dialogDark]="CurrentTheme() == Dark()" [class.opacityFull]="showResetMonth()">
+    <header>Reset to Empty Month-to-Month Countdown?</header>
+    <p>This will reset the countdown name, end message and all milestone values back to their default values.<br><br>It will also set the start date to the 1st day of this month and the end date to the 1st day of next month.</p>
+    <div [class.dialogButtonWarningLight]="CurrentTheme() == Light()" [class.dialogButtonWarningDark]="CurrentTheme() == Dark()" (click)="resetMonth()">Reset</div>
+    <div [class.dialogButtonLight]="CurrentTheme() == Light()" [class.dialogButtonDark]="CurrentTheme() == Dark()" (click)="openResetMonth(false)">Cancel</div>
+</div>
+
 <div [class.dialogLight]="CurrentTheme() == Light()" [class.dialogDark]="CurrentTheme() == Dark()" [class.opacityFull]="showResetEmpty()">
-    <header>Reset All Countdown Values?</header>
+    <header>Reset to Empty Countdown?</header>
     <p>This will reset the start date, end date, countdown name, end message and all milestone values back to their default values.</p>
     <div [class.dialogButtonWarningLight]="CurrentTheme() == Light()" [class.dialogButtonWarningDark]="CurrentTheme() == Dark()" (click)="resetEmpty()">Reset</div>
     <div [class.dialogButtonLight]="CurrentTheme() == Light()" [class.dialogButtonDark]="CurrentTheme() == Dark()" (click)="openResetEmpty(false)">Cancel</div>

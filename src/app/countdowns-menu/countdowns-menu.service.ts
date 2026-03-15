@@ -43,20 +43,49 @@ export class CountdownsMenuService
         this.closeMenu();
     }
 
-    addCountdown(isYearToYear = false)
+    addMonthToMonthCountdown()
     {
-        let newCountdown: Countdown;
+        let newCountdown: Countdown =
+        {
+            name: "",
+            endMessage: "",
+            startDate: new Date(Date.UTC(new Date().getFullYear(), new Date().getMonth(), 1)),
+            endDate: new Date(Date.UTC(new Date().getFullYear(), new Date().getMonth() + 1, 1)),
+            notified: false,
+            milestones:
+                [
+                    {
+                        name: "new milestone",
+                        date: new Date(Date.UTC(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 1)),
+                        notes: "",
+                        notified: false
+                    }
+                ]
+        };
+        
+        // A new countdown will not be added if already at limit
+        if(this.countdownCountWithinLimit())
+        {
+            this.appService.addCountdown(newCountdown);
+            this.appService.saveCountdowns();
+            this.switchCountdown(this.appService.countdowns().length-1);
+        }        
 
-        if(!isYearToYear)
+        this.closeMenu();
+
+        console.log(newCountdown);
+    }
+
+    addYearToYearCountdown()
+    {
+        let newCountdown: Countdown =
         {
-            newCountdown =
-            {
-                name: "",
-                endMessage: "",
-                startDate: new Date(Date.UTC(new Date().getFullYear(), new Date().getMonth(), new Date().getDate())),
-                endDate: new Date(Date.UTC(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 10)),
-                notified: false,
-                milestones:
+            name: "",
+            endMessage: "",
+            startDate: new Date(Date.UTC(new Date().getFullYear(), 0, 1)),
+            endDate: new Date(Date.UTC(new Date().getFullYear() + 1, 0, 1)),
+            notified: false,
+            milestones:
                 [
                     {
                         name: "new milestone",
@@ -65,18 +94,32 @@ export class CountdownsMenuService
                         notified: false
                     }
                 ]
-            };
-        }
-        else
+        };
+        
+
+        // A new countdown will not be added if already at limit
+        if(this.countdownCountWithinLimit())
         {
-            newCountdown =
-            {
-                name: "",
-                endMessage: "",
-                startDate: new Date(Date.UTC(new Date().getFullYear(), 0, 1)),
-                endDate: new Date(Date.UTC(new Date().getFullYear()+1, 0, 1)),
-                notified: false,
-                milestones:
+            this.appService.addCountdown(newCountdown);
+            this.appService.saveCountdowns();
+            this.switchCountdown(this.appService.countdowns().length-1);
+        }        
+
+        this.closeMenu();
+
+        console.log(newCountdown);
+    }
+
+    addEmptyCountdown()
+    {
+        let newCountdown: Countdown =
+        {
+            name: "",
+            endMessage: "",
+            startDate: new Date(Date.UTC(new Date().getFullYear(), new Date().getMonth(), new Date().getDate())),
+            endDate: new Date(Date.UTC(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 10)),
+            notified: false,
+            milestones:
                 [
                     {
                         name: "new milestone",
@@ -85,8 +128,7 @@ export class CountdownsMenuService
                         notified: false
                     }
                 ]
-            };
-        }
+        };
 
         // A new countdown will not be added if already at limit
         if(this.countdownCountWithinLimit())
@@ -121,8 +163,14 @@ export class CountdownsMenuService
                 this.switchCountdown(this.appService.selected().countdown - 1);
             }
 
-            this.appService.deleteCountdown(index);
             this.notificationService.deleteNotificationsByCountdown(index);
+            // Decrementing the countdown field of the notifications for every countdown after the one being deleted so that they match the new array index after deletion
+            for(let i = index+1; i<this.appService.countdowns().length; i+=1)
+            {
+                this.notificationService.decrementCountdownNumberByCountdown(i);
+            }
+
+            this.appService.deleteCountdown(index);
             this.appService.saveCountdowns();
 
             this.closeMenu();

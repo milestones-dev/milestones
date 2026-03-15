@@ -1,4 +1,4 @@
-import { Component, computed } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { AppService } from '../app.service';
 import { NotificationsService } from './notifications.service';
 import { SettingsService } from '../edit-settings-about/settings/settings.service';
@@ -9,7 +9,8 @@ import { DatePipe } from '@angular/common';
   selector: 'app-notifications',
   imports: [DatePipe],
   templateUrl: './notifications.component.html',
-  styleUrl: './notifications.component.css'
+  styleUrl: './notifications.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NotificationsComponent
 {

@@ -1,0 +1,12 @@
+{
+  "name": "Milestones",
+  "icons": [
+    {
+      "src": "Milestones.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone"
+}

@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { SettingsService } from './settings.service';
 import { Language, MilestoneLabelFormat, NotificationSetting, Theme, TimeRemainingText, Wallpaper, WallpaperPreview } from './settings.model';
 import { AppService } from '../../app.service';
@@ -9,7 +9,8 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-settings',
   imports: [FormsModule],
   templateUrl: './settings.component.html',
-  styleUrl: './settings.component.css'
+  styleUrl: './settings.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SettingsComponent {
 
@@ -368,6 +369,10 @@ export class SettingsComponent {
     return this.appService.show().resetYear;
   });
 
+  showResetMonth = computed(() => {
+    return this.appService.show().resetMonth;
+  });
+
   showResetEmpty = computed(() => {
     return this.appService.show().resetEmpty;
   });
@@ -375,6 +380,15 @@ export class SettingsComponent {
   showResetSettings = computed(() => {
     return this.appService.show().resetSettings;
   });
+
+  openResetMonth(isOpen: boolean = true)
+  {
+    let newShow: Show = { ...this.appService.show() };
+
+    newShow.resetMonth = isOpen;
+
+    this.appService.show.set(newShow);
+  }
 
   openResetYear(isOpen: boolean = true)
   {
@@ -401,6 +415,13 @@ export class SettingsComponent {
     newShow.resetSettings = isOpen;
 
     this.appService.show.set(newShow);
+  }
+
+  resetMonth()
+  {
+    this.settingsService.resetMonth();
+
+    this.openResetMonth(false);
   }
 
   resetYear()

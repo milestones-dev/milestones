@@ -1,4 +1,4 @@
-import { Component, computed } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { AppService } from '../app.service';
 import { Show } from '../app.model';
 import { SettingsComponent } from "./settings/settings.component";
@@ -11,7 +11,8 @@ import { EditService } from './edit/edit.service';
   selector: 'app-edit-settings-about',
   imports: [SettingsComponent, EditComponent],
   templateUrl: './edit-settings-about.component.html',
-  styleUrl: './edit-settings-about.component.css'
+  styleUrl: './edit-settings-about.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EditSettingsAboutComponent {
   constructor(private appService: AppService, private settingsService: SettingsService, private editService: EditService){}

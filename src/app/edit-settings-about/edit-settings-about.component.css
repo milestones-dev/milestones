@@ -20,6 +20,11 @@
         flex-flow: column
     }
 
+    .containerShadowDarkMode
+    {
+        box-shadow: 0px 0px 17px 6px rgba(255, 255, 255, 0.8)
+    }
+
     #editSettingsAboutHeader
     {
         text-align: center;
@@ -89,17 +94,46 @@
     #editButton
     {
         position: absolute;
-        width: 115px;
-        bottom: 125px;
-        right: 20px
+        width: 64px;
+        bottom: 163px;
+        right: 45px
+    }
+    #editButtonLabel
+    {
+        position: absolute;
+        bottom: 140px;
+        right: 57px;
+        font-family: sans-serif;
+        font-size: 16pt;
+        font-weight: bold;
     }
 
     #settingsButton
     {
         position: absolute;
-        width: 115px;
-        bottom: 20px;
-        right: 20px
+        width: 64px;
+        bottom: 58px;
+        right: 45px
+    }
+    #settingsButtonLabel
+    {
+        position: absolute;
+        bottom: 36px;
+        right: 35px;
+        font-family: sans-serif;
+        font-size: 16pt;
+        font-weight: bold;
+    }
+
+    .lightTextShadow
+    {
+        color: #000;
+        text-shadow: rgb(255, 255, 255) 3px 3px 8px, rgb(255, 255, 255) -3px -3px 8px, rgb(255, 255, 255) -3px 3px 8px, rgb(255, 255, 255) 3px -3px 8px
+    }
+    .darkTextShadow
+    {
+        color: #fff;
+        text-shadow: rgb(0, 0, 0) 3px 3px 8px, rgb(0, 0, 0) -3px -3px 8px, rgb(0, 0, 0) -3px 3px 8px, rgb(0, 0, 0) 3px -3px 8px
     }
 
     #editButton img, #settingsButton img
@@ -329,17 +363,46 @@
     #editButton
     {
         position: absolute;
-        width: 115px;
-        bottom: 125px;
-        right: 20px
+        width: 64px;
+        bottom: 163px;
+        right: 45px
+    }
+    #editButtonLabel
+    {
+        position: absolute;
+        bottom: 140px;
+        right: 57px;
+        font-family: sans-serif;
+        font-size: 16pt;
+        font-weight: bold;
     }
 
     #settingsButton
     {
         position: absolute;
-        width: 115px;
-        bottom: 20px;
-        right: 20px
+        width: 64px;
+        bottom: 58px;
+        right: 45px
+    }
+    #settingsButtonLabel
+    {
+        position: absolute;
+        bottom: 36px;
+        right: 35px;
+        font-family: sans-serif;
+        font-size: 16pt;
+        font-weight: bold;
+    }
+
+    .lightTextShadow
+    {
+        color: #000;
+        text-shadow: rgb(255, 255, 255) 3px 3px 8px, rgb(255, 255, 255) -3px -3px 8px, rgb(255, 255, 255) -3px 3px 8px, rgb(255, 255, 255) 3px -3px 8px
+    }
+    .darkTextShadow
+    {
+        color: #fff;
+        text-shadow: rgb(0, 0, 0) 3px 3px 8px, rgb(0, 0, 0) -3px -3px 8px, rgb(0, 0, 0) -3px 3px 8px, rgb(0, 0, 0) 3px -3px 8px
     }
 
     #editButton img, #settingsButton img

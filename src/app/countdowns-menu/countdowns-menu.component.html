@@ -40,13 +40,14 @@
          [class.addOptionsLight]="themeIsLight()"
          [class.addOptionsDark]="themeIsDark()"
          [class.opacityFull]="showAddOptions()">
-        <p [class.addOptionLight]="themeIsLight()" [class.addOptionDark]="themeIsDark()" (click)="addCountdown()">New Empty Countdown</p>
-        <p [class.addOptionLight]="themeIsLight()" [class.addOptionDark]="themeIsDark()" (click)="addCountdown(true)">New Year-to-Year Countdown</p>
+        <p [class.addOptionLight]="themeIsLight()" [class.addOptionDark]="themeIsDark()" (click)="addEmptyCountdown()">New Empty Countdown</p>
+        <p [class.addOptionLight]="themeIsLight()" [class.addOptionDark]="themeIsDark()" (click)="addYearToYearCountdown()">New Year-to-Year Countdown</p>
+        <p [class.addOptionLight]="themeIsLight()" [class.addOptionDark]="themeIsDark()" (click)="addMonthToMonthCountdown()">New Month-to-Month Countdown</p>
         <p [class.addOptionLight]="themeIsLight()" [class.addOptionDark]="themeIsDark()" class="lastItem" (click)="openImportCountdown()">Import Existing Countdown</p>
     </div>
 </div>
 
-<div class="greyedOutBackground lightGreyedOutBackground" [class.opacityFull]="showImportCountdown()"></div>
+<div class="greyedOutBackground" [class.opacityFull]="showImportCountdown()"></div>
 
 <div [class.dialogLight]="themeIsLight()" [class.dialogDark]="themeIsDark()" [class.opacityFull]="showImportCountdown()">
     <header>Import Countdown</header>
@@ -82,7 +83,7 @@
 
 @if(!oneCountdownLeft())
 {
-    <div class="greyedOutBackground lightGreyedOutBackground" [class.opacityFull]="showDeleteConfirm() && countdownToDelete() != -1"></div>
+    <div class="greyedOutBackground" [class.opacityFull]="showDeleteConfirm() && countdownToDelete() != -1"></div>
 
     <div [class.dialogLight]="themeIsLight()" [class.dialogDark]="themeIsDark()" [class.opacityFull]="showDeleteConfirm() && countdownToDelete() != -1">
         <header>Delete "{{getCountdownName(countdownToDelete())()}}" Countdown?</header>

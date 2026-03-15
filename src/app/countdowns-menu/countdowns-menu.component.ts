@@ -1,4 +1,4 @@
-import { Component, computed, Signal, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, Signal, signal } from '@angular/core';
 import { AppService } from '../app.service';
 import { CountdownsMenuService } from './countdowns-menu.service';
 import { Countdown, Show } from '../app.model';
@@ -10,7 +10,8 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-countdowns-menu',
   imports: [FormsModule],
   templateUrl: './countdowns-menu.component.html',
-  styleUrl: './countdowns-menu.component.css'
+  styleUrl: './countdowns-menu.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CountdownsMenuComponent {
   constructor(protected countdownsMenuService: CountdownsMenuService, private appService: AppService, private settingsService: SettingsService)
@@ -129,9 +130,19 @@ export class CountdownsMenuComponent {
     this.countdownsMenuService.switchCountdown(index);
   }
 
-  addCountdown(isYearToTear = false)
+  addMonthToMonthCountdown()
   {
-    this.countdownsMenuService.addCountdown(isYearToTear);
+    this.countdownsMenuService.addMonthToMonthCountdown();
+  }
+
+  addYearToYearCountdown()
+  {
+    this.countdownsMenuService.addYearToYearCountdown();
+  }
+
+  addEmptyCountdown()
+  {
+    this.countdownsMenuService.addEmptyCountdown();
   }
 
   showDeleteConfirm = computed(() => {

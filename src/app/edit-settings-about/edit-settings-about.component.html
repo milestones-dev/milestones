@@ -1,6 +1,9 @@
-<div class="greyedOutBackground" [class.lightGreyedOutBackground]="themeIsLight()" [class.darkGreyedOutBackground]="themeIsDark()" [class.opacityFull]="showWindow()"></div>
+<div class="greyedOutBackground" [class.opacityFull]="showWindow()"></div>
 
-<div id="editSettingsAboutContainer" [class.lightModePanelBackground]="themeIsLight()" [class.darkModePanelBackground]="themeIsDark()" [class.opacityFull]="showWindow()">
+<div id="editSettingsAboutContainer" [class.lightModePanelBackground]="themeIsLight()"
+                                     [class.darkModePanelBackground]="themeIsDark()"
+                                     [class.containerShadowDarkMode]="themeIsDark()"
+                                     [class.opacityFull]="showWindow()">
     <div id="editSettingsAboutHeader" [class.headerLight]="themeIsLight()" [class.headerDark]="themeIsDark()">
         <div id="openSidebarMobileButton" [class.dialogButtonLight]="themeIsLight()" [class.dialogButtonDark]="themeIsDark()" (click)="toggleSidebarMobile()">
             <div class="menuIconLine firstMenuLine" [class.menuIconLineLight]="themeIsLight()" [class.menuIconLineDark]="themeIsDark()"></div>
@@ -27,11 +30,11 @@
                 <div id="infoGroup" [class.infoGroupLight]="themeIsLight()" [class.infoGroupDark]="themeIsDark()">
                     <div class="infoLine" [class.infoLineLight]="themeIsLight()" [class.infoLineDark]="themeIsDark()">
                         <div class="infoLineKey" [class.textLight]="themeIsLight()" [class.textDark]="themeIsDark()">Milestones Version</div>
-                        <div class="infoLineValue">6.1 (November 2025)</div>
+                        <div class="infoLineValue">6.3 (March 2026)</div>
                     </div>
                     <div class="infoLine" [class.infoLineLight]="themeIsLight()" [class.infoLineDark]="themeIsDark()">
                         <div class="infoLineKey" [class.textLight]="themeIsLight()" [class.textDark]="themeIsDark()">Angular</div>
-                        <div class="infoLineValue">20.3.7</div>
+                        <div class="infoLineValue">21.2.1</div>
                     </div>
                     <div class="infoLine lastItem" [class.infoLineLight]="themeIsLight()" [class.infoLineDark]="themeIsDark()">
                         <div class="infoLineKey" [class.textLight]="themeIsLight()" [class.textDark]="themeIsDark()">Countdowns</div>
@@ -45,5 +48,7 @@
     </div>
 </div>
 
+<div id="editButtonLabel" [class.lightTextShadow]="themeIsLight()" [class.darkTextShadow]="themeIsDark()" (click)="openEdit()">Edit</div>
 <div id="editButton" (click)="openEdit()"><img [src]="themeIsLight() ? 'edit.svg' : 'editDark.svg'" /></div>
+<div id="settingsButtonLabel" [class.lightTextShadow]="themeIsLight()" [class.darkTextShadow]="themeIsDark()" (click)="openSettings()">Settings</div>
 <div id="settingsButton" (click)="openSettings()"><img [src]="themeIsLight() ? 'settings.svg' : 'settingsDark.svg'" /></div>

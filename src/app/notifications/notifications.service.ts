@@ -262,6 +262,23 @@ export class NotificationsService
         this.appService.saveCountdowns();
     }
 
+    // This decrements the countdown number of every notification for a given countdown, used for when a countdown is deleted and all countdown index numbers move down by one
+    decrementCountdownNumberByCountdown(countdownNumber: number)
+    {
+        let updatedNotifications = this.notifications();
+
+        updatedNotifications.forEach((_, i) => {
+            if(_.countdown == countdownNumber)
+            {
+                _.countdown -= 1;
+            }
+        });
+
+        this.notifications.set(updatedNotifications);
+
+        this.saveNotifications();
+    }
+
     deleteNotificationsOlderThanAWeek()
     {
         let theDateAWeekAgo = new Date( Date.UTC(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()-7) ).getTime();

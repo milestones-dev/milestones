@@ -1,4 +1,4 @@
-import { Component, computed } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { ProgressBarService } from './progress-bar.service';
 import { SettingsService } from '../edit-settings-about/settings/settings.service';
 import { Theme } from '../edit-settings-about/settings/settings.model';
@@ -9,7 +9,8 @@ import { Show } from '../app.model';
   selector: 'app-progress-bar',
   imports: [],
   templateUrl: './progress-bar.component.html',
-  styleUrl: './progress-bar.component.css'
+  styleUrl: './progress-bar.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProgressBarComponent {
   constructor(private appService: AppService, private progressBarService: ProgressBarService, private settingsService: SettingsService){}

@@ -1,0 +1,64 @@
+@if(milestoneIsSelected())
+{
+    <span id="detailsTitle">'{{this.milestoneDetailsService.selectedMilestoneName()}}' Details:</span>
+    
+
+    <div id="milestoneDetailsInputs" [class.countdownInputsLight]="themeIsLight()" [class.countdownInputsDark]="themeIsDark()">
+        <div id="milestoneDetailsInputNotes" class="countdownInput" [class.countdownInputLight]="themeIsLight()" [class.countdownInputDark]="themeIsDark()">
+            <textarea id="notesInput"
+        [class.inputLight]="themeIsLight()"
+        [class.inputDark]="themeIsDark()"
+        placeholder="Milestone notes..."
+        [ngModel]="this.milestoneDetailsService.editNotes()" (ngModelChange)="this.milestoneDetailsService.editNotes.set($event); validateNotes()"></textarea>
+        </div>
+
+        <div id="milestoneDetailsInputName" class="countdownInput" [class.countdownInputLight]="themeIsLight()" [class.countdownInputDark]="themeIsDark()">
+            <span [class.textLight]="themeIsLight()" [class.textDark]="themeIsDark()">Name</span>
+            <input type="text"
+            class="countdownInputBox"
+            [class.inputLight]="themeIsLight()"
+            [class.inputDark]="themeIsDark()"
+            [ngModel]="this.milestoneDetailsService.editName()" (ngModelChange)="this.milestoneDetailsService.editName.set($event); validateName()">
+        </div>
+
+        <div id="milestoneDetailsInputDate" class="countdownInput" [class.countdownInputLight]="themeIsLight()" [class.countdownInputDark]="themeIsDark()">
+            <span [class.textLight]="themeIsLight()" [class.textDark]="themeIsDark()">Date</span>
+            <input type="date"
+            class="countdownInputBox"
+            [class.inputLight]="themeIsLight()"
+            [class.inputDark]="themeIsDark()"
+            [ngModel]="this.milestoneDetailsService.editDate() | date:'yyyy-MM-dd'" (ngModelChange)="this.milestoneDetailsService.editDate.set(toDate($event)); validateDate()">
+        </div>
+
+    </div>
+    
+    @if(milestoneDetailsService.errorTextNotes().length == 0
+     && milestoneDetailsService.errorTextName().length == 0
+     && milestoneDetailsService.errorTextDate().length == 0
+     && showSaveButton())
+    {
+        <div
+        id="detailsSaveButton"
+        [class.dialogButtonActionLight]="themeIsLight()"
+        [class.dialogButtonActionDark]="themeIsDark()"
+        (click)="saveDetails()">Save</div>
+    }
+ 
+    @if(milestoneDetailsService.errorTextNotes().length > 0)
+    {
+        <div class="detailsErrorText">{{milestoneDetailsService.errorTextNotes()}}</div>
+    }
+    @if(milestoneDetailsService.errorTextName().length > 0)
+    {
+        <div class="detailsErrorText">{{milestoneDetailsService.errorTextName()}}</div>
+    }
+    @if(milestoneDetailsService.errorTextDate().length > 0)
+    {
+        <div class="detailsErrorText">{{milestoneDetailsService.errorTextDate()}}</div>
+    }
+}
+@else
+{
+    <span id="noMilestoneSelectedText">Click a milestone on the progress bar to see it's details</span>
+}
+

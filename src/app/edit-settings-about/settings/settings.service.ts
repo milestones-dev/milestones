@@ -398,6 +398,30 @@ export class SettingsService
         }
     }
 
+    resetMonth()
+    {
+        let defaultCountdown: Countdown =
+        {
+            name: "",
+            endMessage: "",
+            startDate: new Date(Date.UTC(new Date().getFullYear(), new Date().getMonth(), 1)),
+            endDate: new Date(Date.UTC(new Date().getFullYear(), new Date().getMonth() + 1, 1)),
+            notified: false,
+            milestones: [
+                {
+                    name: "new milestone",
+                    date: new Date(Date.UTC(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 1)),
+                    notes: "",
+                    notified: false
+                }
+            ]
+        };
+
+        this.appService.selectMilestone(-1); // De-selecting any milestones that might have been deleted
+
+        this.appService.updateCountdown(this.appService.selected().countdown, defaultCountdown);
+    }
+
     resetYear()
     {
         let defaultCountdown: Countdown =
